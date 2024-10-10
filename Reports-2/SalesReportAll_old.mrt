@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <Connection Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>Connection</Alias>
+        <ConnectionString>Initial Catalog=restaurant;Integrated Security=False;Password=sa;User ID=sa;Data Source=localhost</ConnectionString>
+        <Name>Connection</Name>
+      </Connection>
+    </Databases>
+    <DataSources isList="true" count="1">
+      <VW_salesreportone Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>VW_salesreportone</Alias>
+        <Columns isList="true" count="9">
+          <value>category_ID,System.String</value>
+          <value>catname,System.String</value>
+          <value>Deleted,System.String</value>
+          <value>menuname,System.String</value>
+          <value>OrdDate,System.DateTime</value>
+          <value>Price,System.Decimal</value>
+          <value>Qty,System.Int64</value>
+          <value>RestName,System.String</value>
+          <value>Status,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>VW_salesreportone</Name>
+        <NameInSource>Connection</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select * from VW_salesreportone where orddate between '10/25/2012' and'10/25/2012 23:59:59'  and  status='R' and deleted=0</SqlCommand>
+      </VW_salesreportone>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="4" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="6">
+        <PageHeaderSection1 Ref="5" type="PageHeaderBand" isKey="true">
+          <Brush>White</Brush>
+          <ClientRectangle>0,0.4,19,0.46</ClientRectangle>
+          <Components isList="true" count="1">
+            <PageNofM1 Ref="6" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>6.46,0,2.54,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>54252d85c683412daa4ad3b604b14035</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>PageNofM1</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <Text>{PageNofM}</Text>
+              <TextBrush>Black</TextBrush>
+            </PageNofM1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>f16feb9a283446baac6b1e58266a68f8</Guid>
+          <Name>PageHeaderSection1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </PageHeaderSection1>
+        <ReportHeaderSection1 Ref="7" type="ReportTitleBand" isKey="true">
+          <Brush>White</Brush>
+          <ClientRectangle>0,1.66,19,1.6</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text3 Ref="8" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>0.6,0.04,3.2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>fae9998b4e7f40d98572e29b3efbb1ac</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="4" />
+              <Parent isRef="7" />
+              <Text>{VW_salesreportone.RestName} </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text3>
+            <Text1 Ref="9" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>0.6,0.54,3,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="4" />
+              <Parent isRef="7" />
+              <Text>Sales Report(Day)</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text1>
+            <Text5 Ref="10" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>0.6,0.94,1.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="4" />
+              <Parent isRef="7" />
+              <Text>{Today}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="11" type="DateFormat" isKey="true">
+                <StringFormat>dd/MM/yyyy</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+            </Text5>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>04cedfbf5aae49c1b09f37e5eb05771d</Guid>
+          <Name>ReportHeaderSection1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </ReportHeaderSection1>
+        <GroupHeaderSection1 Ref="12" type="GroupHeaderBand" isKey="true">
+          <Brush>White</Brush>
+          <ClientRectangle>0,4.06,19,1.2</ClientRectangle>
+          <Components isList="true" count="5">
+            <GroupNameName1 Ref="13" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>0,0,4.55,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>909e13ce52664d7eb15eeda7a3cb2f33</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>GroupNameName1</Name>
+              <Page isRef="4" />
+              <Parent isRef="12" />
+              <Text> {VW_salesreportone.catname}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </GroupNameName1>
+            <Text6 Ref="14" type="Text" isKey="true">
+              <Border>Top, Bottom;Black;1;Dot;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>0.2,0.54,2.4,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Book Antiqua,9</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="4" />
+              <Parent isRef="12" />
+              <Text>Menu</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text6>
+            <Text7 Ref="15" type="Text" isKey="true">
+              <Border>Top, Bottom;Black;1;Dot;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>2.6,0.54,1.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Book Antiqua,9</Font>
+              <Guid>29c59a3f56de49039dc553d4731789bc</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="4" />
+              <Parent isRef="12" />
+              <Text>ordtime</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text7>
+            <Text8 Ref="16" type="Text" isKey="true">
+              <Border>Top, Bottom;Black;1;Dot;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>4.4,0.54,1,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Book Antiqua,9</Font>
+              <Guid>c53512f58289421a8dca9fe48900c99f</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="4" />
+              <Parent isRef="12" />
+              <Text>Qty</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text8>
+            <Text9 Ref="17" type="Text" isKey="true">
+              <Border>Top, Bottom;Black;1;Dot;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>5.4,0.54,1,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Book Antiqua,9</Font>
+              <Guid>50f9488064104077b63d4a946edc436e</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="4" />
+              <Parent isRef="12" />
+              <Text>Price</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text9>
+          </Components>
+          <Condition>{VW_salesreportone.catname}</Condition>
+          <Conditions isList="true" count="0" />
+          <Guid>e81fda28b8b44e56b6384b44dd760ff7</Guid>
+          <Name>GroupHeaderSection1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </GroupHeaderSection1>
+        <DetailSection1 Ref="18" type="DataBand" isKey="true">
+          <Brush>White</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,6.06,19,0.85</ClientRectangle>
+          <Components isList="true" count="4">
+            <Name2 Ref="19" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0.12,0.21,2.5,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>c82d89601c1440ba81f3bb53065cf327</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Name2</Name>
+              <Page isRef="4" />
+              <Parent isRef="18" />
+              <Text>{VW_salesreportone.menuname}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <Type>Expression</Type>
+            </Name2>
+            <Qty1 Ref="20" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>4.28,0.21,0.85,0.34</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>7559008c0f4445159654a89cd3b3becb</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Qty1</Name>
+              <Page isRef="4" />
+              <Parent isRef="18" />
+              <Text> {VW_salesreportone.Qty}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Qty1>
+            <Price1 Ref="21" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>5.13,0.21,1.07,0.34</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>1b8e66ffc06849cbaf0db49c7c5c475d</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Price1</Name>
+              <Page isRef="4" />
+              <Parent isRef="18" />
+              <Text> {VW_salesreportone.Price}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Price1>
+            <orderTime1 Ref="22" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>2.7,0.21,1.65,0.34</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>ac94703296d64a709f81687aea181e87</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>orderTime1</Name>
+              <Page isRef="4" />
+              <Parent isRef="18" />
+              <Text> {VW_salesreportone.OrdDate}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="23" type="DateFormat" isKey="true">
+                <StringFormat>dd/MM/yyyy</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+            </orderTime1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>VW_salesreportone</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Guid>fd9c87232cf2412bad7f154ab5004fc6</Guid>
+          <Name>DetailSection1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Sort isList="true" count="0" />
+        </DetailSection1>
+        <GroupFooterSection1 Ref="24" type="GroupFooterBand" isKey="true">
+          <Brush>White</Brush>
+          <ClientRectangle>0,7.71,19,0.8</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text2 Ref="25" type="Text" isKey="true">
+              <Border>Top, Bottom;Black;1;Dot;False;4;Black</Border>
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>3.21,0.21,1.72,0.43</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,9,Bold</Font>
+              <Guid>92c90f93ed9a4a0b9fcf50979fad1d3c</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="4" />
+              <Parent isRef="24" />
+              <Text>TOTAL (RM)</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text2>
+            <subTotal1 Ref="26" type="Text" isKey="true">
+              <Border>Top, Bottom;Black;1;Dot;False;4;Black</Border>
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>4.93,0.21,1.18,0.43</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9</Font>
+              <Guid>379921fc0683483ba231c40caeedbca8</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>subTotal1</Name>
+              <Page isRef="4" />
+              <Parent isRef="24" />
+              <Text> {Sum( VW_salesreportone.Price)}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </subTotal1>
+            <Line7 Ref="27" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>0,0.03,7.26,0.0254</ClientRectangle>
+              <Color>Black</Color>
+              <EndCap Ref="28" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Guid>ced980fca428474a9a61cd066999d122</Guid>
+              <Name>Line7</Name>
+              <Page isRef="4" />
+              <Parent isRef="24" />
+              <Size>0</Size>
+              <StartCap Ref="29" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+              <Style>Dot</Style>
+            </Line7>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>f1f4a97ac7da415fb87f422859c90efa</Guid>
+          <Name>GroupFooterSection1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </GroupFooterSection1>
+        <ReportFooterSection1 Ref="30" type="FooterBand" isKey="true">
+          <Brush>White</Brush>
+          <ClientRectangle>0,9.31,19,1.06</ClientRectangle>
+          <Components isList="true" count="2">
+            <Text27 Ref="31" type="Text" isKey="true">
+              <Border>Top, Bottom;Black;1;Double;False;4;Black</Border>
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>2.73,0.23,1.94,0.43</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,10,Bold</Font>
+              <Guid>304ce9c7ff944a83adc0f2e7fd8f981f</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text27</Name>
+              <Page isRef="4" />
+              <Parent isRef="30" />
+              <Text>TOTAL (RM)</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text27>
+            <Total1 Ref="32" type="Text" isKey="true">
+              <Border>Top, Bottom;Black;1;Double;False;4;Black</Border>
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>4.66,0.23,1.67,0.43</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <Guid>f18e72fae54546c8883ee1e951050b65</Guid>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Total1</Name>
+              <Page isRef="4" />
+              <Parent isRef="30" />
+              <Text> {Sum( VW_salesreportone.Price)}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Total1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Guid>c7eed8cb6dee426f8795f202201479e7</Guid>
+          <Name>ReportFooterSection1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </ReportFooterSection1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>069ae030a1114f8f8fcdb6650aec8c94</Guid>
+      <Margins>1,1,1,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="33" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="34" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>11/1/2012 7:18:57 PM</ReportChanged>
+  <ReportCreated>10/18/2012 5:08:28 PM</ReportCreated>
+  <ReportFile>C:\inetpub\wwwroot\RestaurantSS\Reports\SalesReportAll_old.mrt</ReportFile>
+  <ReportGuid>161c06439c934064b1b9848830703d78</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2012.1.1300</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+        #endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

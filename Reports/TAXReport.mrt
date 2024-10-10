@@ -1,0 +1,519 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <Connection Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>Connection</Alias>
+        <ConnectionString>Initial Catalog=restaurant_gst;Integrated Security=False;Password=myplant;User ID=sa;Data Source=localhost</ConnectionString>
+        <Name>Connection</Name>
+      </Connection>
+    </Databases>
+    <DataSources isList="true" count="5">
+      <restaurantMaster Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>restaurantMaster</Alias>
+        <Columns isList="true" count="17">
+          <value>Address1,System.String</value>
+          <value>Address2,System.String</value>
+          <value>Name,System.String</value>
+          <value>City,System.String</value>
+          <value>Country,System.String</value>
+          <value>Created_By,System.String</value>
+          <value>Created_Date,System.DateTime</value>
+          <value>Deleted,System.String</value>
+          <value>giud,System.String</value>
+          <value>ID,System.String</value>
+          <value>Logo,System.String</value>
+          <value>Modified_By,System.String</value>
+          <value>Modified_Date,System.DateTime</value>
+          <value>Picture,System.String</value>
+          <value>Row_Version,System.Int64</value>
+          <value>State,System.String</value>
+          <value>TelNo,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>restaurantMaster</Name>
+        <NameInSource>Connection</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select * from restaurantMaster</SqlCommand>
+      </restaurantMaster>
+      <taxMaster Ref="4" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>taxMaster</Alias>
+        <Columns isList="true" count="10">
+          <value>Created_By,System.String</value>
+          <value>Created_Date,System.DateTime</value>
+          <value>Deleted,System.String</value>
+          <value>Flag,System.String</value>
+          <value>ID,System.String</value>
+          <value>Modified_By,System.String</value>
+          <value>Modified_Date,System.DateTime</value>
+          <value>Name,System.String</value>
+          <value>Percentage,System.String</value>
+          <value>Row_Version,System.Int64</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>taxMaster</Name>
+        <NameInSource>Connection</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select * from taxMaster</SqlCommand>
+      </taxMaster>
+      <VW_TaxreportOrdermaster Ref="5" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>VW_TaxreportOrdermaster</Alias>
+        <Columns isList="true" count="6">
+          <value>Cashier,System.String</value>
+          <value>Deleted,System.String</value>
+          <value>OrdDate,System.DateTime</value>
+          <value>OrdPrice,System.Decimal</value>
+          <value>Status,System.String</value>
+          <value>Tax,System.Decimal</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>VW_TaxreportOrdermaster</Name>
+        <NameInSource>Connection</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select * from VW_TaxreportOrdermaster</SqlCommand>
+      </VW_TaxreportOrdermaster>
+      <menuMaster Ref="6" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>menuMaster</Alias>
+        <Columns isList="true" count="17">
+          <value>Available,System.String</value>
+          <value>Category,System.String</value>
+          <value>Created_By,System.String</value>
+          <value>Created_Date,System.DateTime</value>
+          <value>Deleted,System.String</value>
+          <value>Description,System.String</value>
+          <value>diningcharge,System.Decimal</value>
+          <value>Discount,System.Decimal</value>
+          <value>guid,System.String</value>
+          <value>ID,System.String</value>
+          <value>Image,System.String</value>
+          <value>Modified_By,System.String</value>
+          <value>Modified_Date,System.DateTime</value>
+          <value>Name,System.String</value>
+          <value>Picture,System.String</value>
+          <value>Row_Version,System.Int64</value>
+          <value>UnitPrice,System.Decimal</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>menuMaster</Name>
+        <NameInSource>Connection</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select * from menuMaster</SqlCommand>
+      </menuMaster>
+      <orderMaster Ref="7" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>orderMaster</Alias>
+        <Columns isList="true" count="21">
+          <value>Cashier,System.String</value>
+          <value>Created_By,System.String</value>
+          <value>Created_Date,System.DateTime</value>
+          <value>Deleted,System.String</value>
+          <value>GST,System.Decimal</value>
+          <value>Modified_By,System.String</value>
+          <value>Modified_Date,System.DateTime</value>
+          <value>OrdDate,System.DateTime</value>
+          <value>OrderID,System.String</value>
+          <value>OrdPrice,System.Decimal</value>
+          <value>Row_Version,System.Int64</value>
+          <value>Status,System.String</value>
+          <value>Table_ID,System.String</value>
+          <value>Tax,System.Decimal</value>
+          <value>TaxAdj,System.String</value>
+          <value>TaxOrg,System.String</value>
+          <value>totaladj,System.Decimal</value>
+          <value>TotalPrice,System.Decimal</value>
+          <value>TotDed,System.String</value>
+          <value>UID,System.String</value>
+          <value>Waiter,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>orderMaster</Name>
+        <NameInSource>Connection</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select * from orderMaster</SqlCommand>
+      </orderMaster>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="4">
+      <value>Formula_x0020_Fields,subTotal,subTotal,System.String,Sum_x0020__x0028__x007B_orderDetail.Price_x007D__x002C__x0020__x007B_categoryMaster.Name_x007D__x0029_,True,False</value>
+      <value>Formula_x0020_Fields,Total,Total,System.String,Sum_x0020__x0028__x007B_orderMaster.Tax_x007D__x0029_,True,False</value>
+      <value>Formula_x0020_Fields,orderTime,orderTime,System.String,Time_x0028__x007B_orderMaster.OrdDate_x007D__x0029_,True,False</value>
+      <value>Formula_x0020_Fields,taxPerc,taxPerc,System.String,_x007B_taxMaster.Percentage_x007D__x0020__x0026__x0020__x0022__x0025__x0022_,True,False</value>
+    </Variables>
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="1">
+    <value>InternalVersion,_x0032_011.2.1012_x0020_from_x0020_14-Jun-2011</value>
+  </MetaTags>
+  <Pages isList="true" count="1">
+    <Page1 Ref="8" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="5">
+        <ReportHeaderSection1 Ref="9" type="ReportTitleBand" isKey="true">
+          <Brush>White</Brush>
+          <ClientRectangle>0,0.4,7.5,2</ClientRectangle>
+          <Components isList="true" count="4">
+            <Name1 Ref="10" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>0.21,0.61,6.82,0.43</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Name1</Name>
+              <Page isRef="8" />
+              <Parent isRef="9" />
+              <Text>{restaurantMaster.Name} </Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Name1>
+            <Text3 Ref="11" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>0.21,1.04,6.82,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="8" />
+              <Parent isRef="9" />
+              <Text>Dining Charge Report</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text3>
+            <DataDate1 Ref="12" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>0.21,1.47,6.82,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>DataDate1</Name>
+              <Page isRef="8" />
+              <Parent isRef="9" />
+              <Text>{Format("{0:d}", Today)}</Text>
+              <TextBrush>Black</TextBrush>
+            </DataDate1>
+            <PageNofM1 Ref="13" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>0.26,0,6.74,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>5d60ce0cf5b94117a6152db0ccc2414d</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>PageNofM1</Name>
+              <Page isRef="8" />
+              <Parent isRef="9" />
+              <Text>{PageNofM}</Text>
+              <TextBrush>Black</TextBrush>
+            </PageNofM1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ReportHeaderSection1</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+        </ReportHeaderSection1>
+        <PageFooterSection1 Ref="14" type="PageFooterBand" isKey="true">
+          <Brush>HatchBrush,BackwardDiagonal,DarkGray,White</Brush>
+          <ClientRectangle>0,95.61,7.5,0.39</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <Name>PageFooterSection1</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+        </PageFooterSection1>
+        <PageHeaderSection1 Ref="15" type="PageHeaderBand" isKey="true">
+          <Brush>White</Brush>
+          <ClientRectangle>0,3.2,7.5,1.07</ClientRectangle>
+          <Components isList="true" count="6">
+            <Name2 Ref="16" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>1.9,0.01,2.18,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Name2</Name>
+              <Page isRef="8" />
+              <Parent isRef="15" />
+              <Text>Dining Chrg.</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Name2>
+            <taxPerc1 Ref="17" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>4.34,0.01,1.09,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>taxPerc1</Name>
+              <Page isRef="8" />
+              <Parent isRef="15" />
+              <Text>{menuMaster.diningcharge}%</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </taxPerc1>
+            <Text6 Ref="18" type="Text" isKey="true">
+              <Border>Top, Bottom;Black;1;Dot;False;4;Black</Border>
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>1.8,0.6,2.25,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>423eaf6065824e5194597f46994e32f0</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text6</Name>
+              <Page isRef="8" />
+              <Parent isRef="15" />
+              <Text>Ord Date</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text6>
+            <Text23 Ref="19" type="Text" isKey="true">
+              <Border>Top, Bottom;Black;1;Dot;False;4;Black</Border>
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>5.2,0.6,1.07,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>af0c8e3f58054020b632c0514c73b835</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="8" />
+              <Parent isRef="15" />
+              <Text>{orderMaster.Tax}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text23>
+            <Text7 Ref="20" type="Text" isKey="true">
+              <Border>Top, Bottom;Black;1;Dot;False;4;Black</Border>
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>0,0.6,1.85,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>fa6ec2eaa0ec41ee85f7947f8fc659f1</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="8" />
+              <Parent isRef="15" />
+              <Text>Cashier</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text7>
+            <Text1 Ref="21" type="Text" isKey="true">
+              <Border>Top, Bottom;Black;1;Dot;False;4;Black</Border>
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>4,0.6,1.27,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>6ae70b7f043643cf81737b238591d563</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="8" />
+              <Parent isRef="15" />
+              <Text>Price</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>PageHeaderSection1</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+        </PageHeaderSection1>
+        <DetailSection1 Ref="22" type="DataBand" isKey="true">
+          <Brush>White</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,5.07,7.5,0.85</ClientRectangle>
+          <Components isList="true" count="4">
+            <OrdDate1 Ref="23" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>1.83,0.21,2.24,0.34</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>OrdDate1</Name>
+              <Page isRef="8" />
+              <Parent isRef="22" />
+              <Text>{orderMaster.OrdDate}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="24" type="DateFormat" isKey="true">
+                <StringFormat>dd/MM/yyyy</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </OrdDate1>
+            <OrdPrice1 Ref="25" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>4.07,0.21,0.89,0.34</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>OrdPrice1</Name>
+              <Page isRef="8" />
+              <Parent isRef="22" />
+              <Text> {orderMaster.OrdPrice}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </OrdPrice1>
+            <Tax1 Ref="26" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>5,0.21,1.04,0.34</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Tax1</Name>
+              <Page isRef="8" />
+              <Parent isRef="22" />
+              <Text> {orderMaster.Tax}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Tax1>
+            <Text2 Ref="27" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,0.13,1.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="8" />
+              <Parent isRef="22" />
+              <Text>{orderMaster.Cashier}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text2>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataRelationName isNull="true" />
+          <DataSourceName>orderMaster</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DetailSection1</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+          <Sort isList="true" count="0" />
+        </DetailSection1>
+        <ReportFooterSection1 Ref="28" type="FooterBand" isKey="true">
+          <Brush>White</Brush>
+          <ClientRectangle>0,6.72,7.5,0.86</ClientRectangle>
+          <Components isList="true" count="2">
+            <Text27 Ref="29" type="Text" isKey="true">
+              <Border>Top, Bottom;Black;1;Dot;False;4;Black</Border>
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>2.33,0.23,2.14,0.43</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,10,Bold</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text27</Name>
+              <Page isRef="8" />
+              <Parent isRef="28" />
+              <Text>TOTAL (RM)</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Text27>
+            <Total1 Ref="30" type="Text" isKey="true">
+              <Border>Top, Bottom;Black;1;Dot;False;4;Black</Border>
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>4.46,0.23,1.67,0.43</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Total1</Name>
+              <Page isRef="8" />
+              <Parent isRef="28" />
+              <Text>{Sum(orderMaster.Tax)}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Total1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ReportFooterSection1</Name>
+          <Page isRef="8" />
+          <Parent isRef="8" />
+        </ReportFooterSection1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>cb2bbb36c9604f8898d9e2a087608678</Guid>
+      <LargeHeight>True</LargeHeight>
+      <Margins>0,1,0,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>25</PageHeight>
+      <PageWidth>8.5</PageWidth>
+      <Report isRef="0" />
+      <TitleBeforeHeader>True</TitleBeforeHeader>
+      <UnlimitedBreakable>False</UnlimitedBreakable>
+      <Watermark Ref="31" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="32" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportAuthor isNull="true" />
+  <ReportChanged>4/2/2015 12:14:56 AM</ReportChanged>
+  <ReportCreated>10/18/2012 12:09:50 PM</ReportCreated>
+  <ReportDescription isNull="true" />
+  <ReportFile>C:\inetpub\wwwroot\RestaurantGST\Reports\TAXReport.mrt</ReportFile>
+  <ReportGuid>dd41a1157e72496f95f0488affff4083</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2011.2.1100</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+        #endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

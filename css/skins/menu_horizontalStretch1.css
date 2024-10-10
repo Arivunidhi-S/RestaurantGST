@@ -1,0 +1,71 @@
+
+
+/*~~~~~~~~~~~~~~~~ Menu Styles (global - all menus) ~~~~~~~~~~~~~~~~*/
+
+
+	/****[Main Menu]****/
+
+	/*Main Menu Container*/
+	.nfMain {border:solid 1px #000;border-width:0px 0px 0px 2px;}
+
+	/*Items*/
+	.nfMain .nfItem {}
+
+	/*Item Links*/
+	.nfMain .nfLink {border-style:solid;border-width:0px 2px 2px 0px;border-color:#000;padding:9px 30px 5px 30px;font-family:Arial;font-size:.9em;color:#000;text-decoration:none;}
+
+	/*Item Links - Hover (duplicate styles below!)*/
+	.nfPure .nfItem:hover>.nfLink, .nfPure .nfItem:hover>*>.nfLink {text-decoration:underline;}
+	.nfPure .nfLink:hover, .nfMain .nfJSHover {text-decoration:underline;}
+
+	/*Item Links - Active*/
+	.nfMain .nfItem .nfJSActive {text-decoration:underline;border-bottom-color:#bbbbbb;background:transparent url('../../images/gallery/menu/horizontalStretch1/mainItemBg.gif') repeat-x 0% 100%}
+	
+	/*Item Links - Focus*/
+	.nfPure .nfLink:focus, .nfMain .nfItem .nfJSFocus {text-decoration:underline;}	
+
+	/*Item Links - Breadcrumbs*/
+	.nfMain .nfItem .nfJSBreadcrumb {color:#00f;}
+
+
+
+	/****[Sub Menus]****/
+
+	/*Sub Menu Position Offsets*/
+	.nfMain .nfSubC {margin:-1px 0px 0px -2px;}
+
+	/*Sub Menu Styles*/
+	.nfMain .nfSubS {background:#fff url('../../images/gallery/menu/horizontalStretch1/subBg.gif') repeat-x;padding:20px;border:solid 1px #000;border-width:0px 2px 2px 2px;-moz-border-radius:0px 0px 6px 6px;-webkit-border-bottom-right-radius:6px;-webkit-border-bottom-left-radius:6px;}
+
+	/*Sub Menu Position Offsets - Level 2*/
+	.nfMain .nfSubS .nfSubC {margin:0px 0px 0px 0px;}
+
+	/*Sub Menu Styles - Level 2*/
+	.nfMain .nfSubS .nfSubS {padding:20px;border-color:#666;border-width:2px;-moz-border-radius:0px 10px 10px 10px;-webkit-border-bottom-left-radius:10px;}
+
+	/*Items*/
+	.nfMain .nfSubC .nfItem {height:auto;}
+
+	/*Item Links*/
+	.nfMain .nfSubS .nfLink {padding:3px 40px 3px 15px;font-size:.8em;border-width:0px;color:#333;}
+
+	/*Item Links - Parent*/
+	.nfMain .nfSubS .nfParent .nfLink {background-image:url('../../images/plus_darkGreen.gif');background-position:96% 56%;background-repeat:no-repeat;}
+	.nfMain .nfSubS .nfParent .nfJSActive {background-image:url('../../images/minus_darkGreen.gif');}
+	.nfMain .nfSubS .nfParent .nfSubS .nfLink {background-image:none;}
+
+	/*Item Links - Last Child (ignored by IE8 & down)*/
+	.nfMain .nfSubS .nfItem:last-child .nfLink {border-width:0px;}
+	
+	/*Item Links - Hover (duplicate styles below!)*/
+	.nfMain .nfSubC .nfItem:hover>.nfLink {}
+	.nfMain .nfSubC .nfLink:hover, .nfMain .nfSubC .nfJSHover {}
+
+	/*Item Links - Active*/
+	.nfMain .nfSubS .nfItem .nfJSActive {border-bottom-color:#000;}
+	
+	/*Item Links - Focus*/
+	.nfPure .nfSubS .nfLink:focus, .nfMain .nfSubS .nfItem .nfJSFocus {}	
+
+	/*Item Links - Breadcrumbs*/
+	.nfMain .nfSubS .nfItem .nfJSBreadcrumb {}

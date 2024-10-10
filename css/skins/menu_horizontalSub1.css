@@ -1,0 +1,73 @@
+
+
+/*~~~~~~~~~~~~~~~~ Menu Styles (global - all menus) ~~~~~~~~~~~~~~~~*/
+
+
+	/****[Main Menu]****/
+
+	/*Main Menu Container*/
+	.nfMain {}
+
+	/*Items*/
+	.nfMain .nfItem {height:29px;}
+
+	/*Item Links*/
+	.nfMain .nfLink {border-style:dotted;border-width:0px 1px 0px 0px;border-color:#453f2e;padding:0px 26px;font-family:Arial;font-size:.9em;color:#453f2e;text-decoration:none;}
+	
+	/*Item Links - Hover (duplicate styles below!)*/
+	.nfPure .nfItem:hover>.nfLink, .nfPure .nfItem:hover>*>.nfLink {text-decoration:underline;}
+	.nfPure .nfLink:hover, .nfMain .nfJSHover {text-decoration:underline;}
+
+	/*Item Links - Active*/
+	.nfMain .nfItem .nfJSActive {text-decoration:underline;}
+	
+	/*Item Links - Focus*/
+	.nfPure .nfLink:focus, .nfMain .nfItem .nfJSFocus {text-decoration:underline;}	
+
+	/*Item Links - Breadcrumbs*/
+	.nfMain .nfItem .nfJSBreadcrumb {color:#00f;}
+
+
+
+	/****[Sub Menus]****/
+
+	/*Sub Menu Position Offsets*/
+	.nfMain .nfSubC {margin:0px 0px 0px 6px;}
+
+	/*Sub Menu Styles*/
+	.nfMain .nfSubS {background-color:#fff;padding:0px;height:26px;}
+
+	/*Sub Menu Position Offsets - Level 2*/
+	.nfMain .nfSubS .nfSubC {margin:0px 0px 0px -1px;}
+
+	/*Sub Menu Styles - Level 2*/
+	.nfMain .nfSubS .nfSubS {background-color:#fcf1d7;padding:20px;height:auto;border:solid 1px #716137;border-width:0px 1px 1px 1px;-moz-border-radius:0px 10px 10px 10px;-webkit-border-bottom-left-radius:10px;}
+
+	/*Sub Menu Styles - Level 3*/
+	.nfMain .nfSubS .nfSubS .nfSubS {border-width:1px;}
+
+	/*Items*/
+	.nfMain .nfSubC .nfItem {height:auto;}
+
+	/*Item Links*/
+	.nfMain .nfSubS .nfLink {padding:5px 20px;font-size:.8em;border-style:solid; border-width:0px 1px 1px 0px;color:#716137;}
+
+	/*Item Links - Level 2*/
+	.nfMain .nfSubS .nfSubS .nfLink {border-style:dotted;margin:0px 10px;padding:5px 30px 5px 0px;border-width:0px 0px 1px 0px;}
+		
+	
+	/*Item Links - Hover (duplicate styles below!)*/
+	.nfMain .nfSubC .nfItem:hover>.nfLink {}
+	.nfMain .nfSubC .nfLink:hover, .nfMain .nfSubC .nfJSHover {}
+
+	/*Item Links - Active*/
+	.nfMain .nfSubS .nfItem .nfJSActive {border-bottom-color:#fcf1d7;background-color:#fcf1d7;}
+	
+	/*Item Links - Active level 2*/
+	.nfMain .nfSubS .nfSubS .nfItem .nfJSActive {border-bottom-color:#716137;}
+	
+	/*Item Links - Focus*/
+	.nfPure .nfSubS .nfLink:focus, .nfMain .nfSubS .nfItem .nfJSFocus {}	
+
+	/*Item Links - Breadcrumbs*/
+	.nfMain .nfSubS .nfItem .nfJSBreadcrumb {}

@@ -1,0 +1,295 @@
+div#container {
+	overflow: hidden;
+	width: 975px;
+	/*margin-top:-20px;*/
+	margin-top:41px;
+/*	margin-left:-170px;*/
+		margin-left:-30px;
+		height:900px; /*950*/
+
+}
+div.content {
+	display: none;
+	clear: both;
+}
+
+div.content a, div.navigation a {
+	text-decoration: none;
+}
+div.content a:hover, div.content a:active {
+	text-decoration: underline;
+}
+
+/*div.navigation{
+width:1050px;
+margin-left:830px;
+}*/
+div.navigation a.pageLink {
+	height: 57px;
+	line-height: 57px;
+	width:150px;/*width:1000px;*/
+	
+}
+
+a.pageLink {
+	height: 57px;
+	line-height: 57px;
+	width:1100px;/*width:1000px;*/
+	/*margin-top:0px;*/
+	
+}
+
+div.controls {
+
+	position:absolute;
+	margin-top: 425px; /*450 452 5 15 25 */
+	margin-left: 118px;/*555px590 520*/
+	height: 23px;
+
+  
+	
+/*	margin-bottom:50px;*/
+}
+
+div.tabs {
+
+	position:absolute;
+	margin-top: 215px; /*215 452 5 15 25 */
+	margin-left: 118px;/*555px590 520*/
+	height: 38px;
+	width:100px;
+}
+div.controls a {
+	padding: 10px;/* 10*/
+}
+div.ss-controls {
+	float: left;
+}
+div.nav-controls {
+	float: left;
+	
+	
+}
+
+div.slideshow-container,
+div.loader,
+div.slideshow a.advance-link {
+	width: 450px; /* This should be set to be at least the width of the largest image in the slideshow with padding */
+}
+
+div.loader,
+div.slideshow a.advance-link,
+div.caption-container {
+
+	height: 87px; /* This should be set to be at least the height of the largest image in the slideshow with padding */	
+	
+}
+
+div.slideshow-container {
+	position: relative;
+	clear: both;
+	float: left;
+	height: 515px;
+	margin-left:200px;
+	margin-top:25px;
+}
+
+div.loader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: url('images/loader.gif');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+div.slideshow span.image-wrapper {
+	display: block;
+	position: absolute;
+	top: 30px;
+	left: 0;
+}
+div.slideshow a.advance-link {
+	display: block;
+	line-height: 502px; /* This should be set to be at least the height of the largest image in the slideshow with padding */
+	text-align: center;
+}
+
+div.slideshow a.advance-link:hover,
+div.slideshow a.advance-link:active,
+div.slideshow a.advance-link:visited {
+	text-decoration: none;
+}
+div.slideshow a.advance-link:focus {
+	outline: none;
+}
+
+div.slideshow img {
+	border-style: solid;
+	border-width: 1px;
+	margin-top: 0px;/*60 70 80 45*/
+	margin-left: -50px;/*475 225 300*/
+/*	width:310px;
+	height:310px;
+*/
+	width:340px;
+	height:340px;
+	
+
+}
+div.caption-container {
+
+	float: right;
+	position: relative;
+	margin-top: -500px;	/*margin-top:0 70px 40px;*/
+	margin-left: -450px;
+}
+span.image-caption {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+div.caption-container, span.image-caption { 
+
+	
+	width: 795px;
+	margin-top:350px;
+	margin-left:220px;
+}
+
+div.caption {
+	padding: 0 0px; /*	padding: 0 12px;*/
+	/*display: none;*/
+}
+
+div.image-title {
+	font-weight: bold;
+	font-size: 1.4em;
+	color:#408080;
+	padding-top:0px;
+	
+}
+/*div.image-desc {
+	line-height: 1.3em;
+	padding-top: 12px;
+}
+*/
+div.image-desc {
+	line-height: 1.3em;
+	padding-top: 3px;
+	color:#333366; /*408080*/
+	
+}
+
+
+div.download {
+margin-left:441px;
+	/*margin-top: 28px;*/margin-top: -50px;
+}
+div.photo-index {
+	position: fixed/* absolute*/;
+	bottom: 0;
+	left: 0;
+	padding: 0 12px;
+	margin-left:640px;/*360*/
+	margin-top:-400px;/*-400*/
+	color:#000000; /* #FFFFCC*/
+	font-size:1.4em; 
+	font-family:Georgia, "Times New Roman", Times, serif;
+	
+}
+div.navigation-container {
+	float: left;
+	position: relative;
+	left: 80%;
+	width:850px;
+	margin-top:120px;
+	margin-left:150px;
+}
+div.navigation {
+	float: left;
+	position: relative;
+	left: -79%;
+}
+div.navigation a.pageLink {
+	display: block;
+	position: relative;
+	float: left;
+	margin: 2px;
+	width: 16px;
+	background-position:center center;
+	background-repeat:no-repeat;
+	margin-left:-147px;
+	margin-right:250px;
+	
+	
+}
+
+
+div.navigation a.pageLink:focus {
+	outline: none;
+}
+
+ul.thumbs {
+	position: relative;
+	float: left;
+	/*margin-left: 850px;
+	width: 1100px;
+	*/	
+	margin-top: -32px;
+	margin-left: -233px;/*120px*/
+	padding: 0;
+	width: 650px;
+
+}
+ul.thumbs li {
+	float: left;
+	padding: 4px;
+/*	margin: 0px;*/
+	list-style: none;
+	margin-left:-15px;
+	
+}
+a.thumb {
+	padding: 1px;
+	display: block;
+}
+a.thumb:focus {
+	outline: none;
+}
+ul.thumbs img {
+	border: none;
+	display: block;
+	width:95px;
+	height:95px;
+	padding:6px;
+}
+div.pagination {
+	clear: both;
+	position: relative;
+	left: -150%;/*-50%*/
+}
+div.pagination a, div.pagination span.current, div.pagination span.ellipsis {
+	position: relative;
+	display: block;
+	float: left;
+	margin-right: -100px;
+	padding: 4px 7px 2px 7px;
+	border: 1px solid #ccc;
+}
+div.pagination a:hover {
+	text-decoration: none;
+}
+div.pagination span.current {
+	font-weight: bold;
+}
+div.pagination span.ellipsis {
+	border: none;
+	padding: 5px 0 3px 2px;
+}
+
+div.gallery-gutter {
+	clear: both;
+	padding-bottom: 20px;
+}

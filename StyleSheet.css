@@ -1,0 +1,210 @@
+﻿body {
+	margin-left: 0px;
+	margin-right: 0px;
+	background-color: #616161;
+}
+#loginpage_layer01_holder {
+	width:563px;
+	height:157px;
+	margin:auto;
+}
+#loginpage_layer01_holder #left {
+	background-image:url(images_login/loginpage_02.jpg);
+	background-repeat:no-repeat;
+	width:96px;
+	height:157px;
+	float:left;
+	display:block;
+}
+#loginpage_layer01_holder #center {
+	background-image:url(images_login/loginpage_03.jpg);
+	background-repeat:no-repeat;
+	width:220px;
+	height:157px;
+	float:left;
+	display:block;
+}
+#loginpage_layer01_holder #right {
+	background-image:url(images_login/loginpage_04.jpg);
+	background-repeat:no-repeat;
+	width:247px;
+	height:157px;
+	float:left;
+	display:block;
+}
+#loginpage_layer02_holder {
+	width:563px;
+	height:164px;
+	margin:auto;
+}
+#loginpage_layer02_holder #left {
+	background-image:url(images_login/loginpage_06.jpg);
+	background-repeat:no-repeat;
+	width:96px;
+	height:164px;
+	float:left;
+	display:block;
+}
+#loginpage_layer02_holder #center {
+	background-image:url(images_login/loginpage_07.png);
+	background-repeat:no-repeat;
+	width:220px;
+	height:164px;
+	float:left;
+	display:block;
+}
+#loginpage_layer02_holder #right {
+	background-image:url(images_login/loginpage_08.jpg);
+	background-repeat:no-repeat;
+	width:247px;
+	height:164px;
+	float:left;
+	display:block;
+}
+#loginpage_layer03_holder {
+	width:563px;
+	height:124px;
+	margin:auto;
+}
+#loginpage_layer03_holder #left {
+	background-image:url(images_login/loginpage_09.jpg);
+	background-repeat:no-repeat;
+	width:96px;
+	height:124px;
+	float:left;
+	display:block;
+}
+#loginpage_layer03_holder #center {
+	background-image:url(images_login/loginpage_10.jpg);
+	background-repeat:no-repeat;
+	width:220px;
+	height:124px;
+	float:left;
+	display:block;
+	font-family: Verdana;
+	color: #FFFF00;
+	font-size: 12px;
+	font-weight: bold;
+}
+#loginpage_layer03_holder #right {
+	background-image:url(images_login/loginpage_11.jpg);
+	background-repeat:no-repeat;
+	width:247px;
+	height:124px;
+	float:left;
+	display:block;
+}
+#loginpage_layer04_holder {
+	width:563px;
+	height:115px;
+	margin:auto;
+}
+#loginpage_layer04_holder #left {
+	background-image:url(images_login/loginpage_12.jpg);
+	background-repeat:no-repeat;
+	width:96px;
+	height:115px;
+	float:left;
+	display:block;
+}
+#loginpage_layer04_holder #center {
+	background-image:url(images_login/loginpage_13.jpg);
+	background-repeat:no-repeat;
+	width:220px;
+	height:115px;
+	float:left;
+	display:block;
+	text-align:left;
+	padding-top:35px;
+	margin-bottom:-35px;
+	color: #FFFFFF;
+	font-size: 11px;
+	font-family: Arial;
+}
+#loginpage_layer04_holder #center a:link, a:visited {
+	color: #FFFF00;
+	text-decoration:none;
+}
+#loginpage_layer04_holder #center a:hover {
+	color: #FF9900;
+	text-decoration:underline;
+}
+#loginpage_layer04_holder #right {
+	background-image:url(images_login/loginpage_14.jpg);
+	background-repeat:no-repeat;
+	width:247px;
+	height:115px;
+	float:left;
+	display:block;
+}
+#loginpage_layer05_holder {
+	width:563px;
+	height:auto;
+	margin:auto;
+	color: #393939;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	text-align: center;
+	padding-left: 125px;
+}
+#loginpage_layer03_holder #center form {
+	text-align:justify;
+	margin:0px;
+}
+#loginpage_layer03_holder #center label {
+	font-size:10px;
+	color: #FFFFFF;
+}
+#loginpage_layer03_holder #center input {
+	background-color:#454544;
+	border:solid 1px #d2d0b5;
+	color: #FFFFFF;
+}
+#loginpage_layer03_holder #center #button {
+	margin-top:5px;
+	background-color: #CCCCCC;
+	border: 3px double #454544;
+	color: #454544;
+	margin-left: 169px;
+	right: 0px;
+	width: 50px;
+}
+
+
+.textboxstyle
+{
+	font-family:Times New Roman;
+	font-size:1;
+	color:Black;
+	height:16px;
+	font-weight:normal;
+}
+
+.unwatermarked {
+}
+
+.watermarked {
+	height:20px;
+	width:150px;
+	padding:2px 0 0 2px;
+	border:1px solid #BEBEBE;
+	background-color:#F0F8FF;
+	color:gray;
+}
+
+.labelstyle
+{
+	font-family:Times New Roman;
+	font-size:8;
+	color:Black;
+	height:16px; 
+	font-weight:normal;
+	
+}
+.buttonstyle
+{
+	font-family:Times New Roman;
+	font-size:Small;
+	color:Black;
+	width:80px;
+	}

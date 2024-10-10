@@ -1,0 +1,921 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <Connection Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>Connection</Alias>
+        <ConnectionString>Integrated Security=False;Data Source=Localhost;Initial Catalog=Restaurant;Password=atserba;User ID=sa</ConnectionString>
+        <Name>Connection</Name>
+      </Connection>
+    </Databases>
+    <DataSources isList="true" count="3">
+      <VW_OrderDetailTable Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>VW_OrderDetailTable</Alias>
+        <Columns isList="true" count="27">
+          <value>OrderID,System.String</value>
+          <value>UID,System.Decimal</value>
+          <value>OrdPrice,System.Decimal</value>
+          <value>Tax,System.Decimal</value>
+          <value>TotalPrice,System.Decimal</value>
+          <value>OrdDate,System.DateTime</value>
+          <value>Waiter,System.String</value>
+          <value>Cashier,System.String</value>
+          <value>TaxAdj,System.String</value>
+          <value>TaxOrg,System.String</value>
+          <value>TotDed,System.Decimal</value>
+          <value>Table_ID,System.Decimal</value>
+          <value>DetailID,System.Decimal</value>
+          <value>MenuID,System.Decimal</value>
+          <value>Qty,System.Int32</value>
+          <value>Status,System.String</value>
+          <value>Split,System.String</value>
+          <value>Deduction,System.Decimal</value>
+          <value>TableNo,System.String</value>
+          <value>Deleted,System.Boolean</value>
+          <value>Price,System.Decimal</value>
+          <value>Name,System.String</value>
+          <value>UnitPrice,System.Decimal</value>
+          <value>Description,System.String</value>
+          <value>Discount,System.Decimal</value>
+          <value>mprice,System.Decimal</value>
+          <value>contact_name,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>VW_OrderDetailTable</Name>
+        <NameInSource>Connection</NameInSource>
+        <Parameters isList="true" count="10">
+          <value>_x0040_Cash,,12,100</value>
+          <value>_x0040_OrderID,,12,100</value>
+          <value>_x0040_Change,,12,100</value>
+          <value>_x0040_ParamTax,,12,100</value>
+          <value>_x0040_ParamDed,,12,100</value>
+          <value>_x0040_ParamNet,,12,100</value>
+          <value>_x0040_OrderID12,,12,100</value>
+          <value>_x0040_OrderID123,,12,100</value>
+          <value>_x0040_ParamDate,,12,100</value>
+          <value>_x0040_ParamDate1,,12,100</value>
+        </Parameters>
+        <SqlCommand>select * from VW_OrderDetailTable where Deleted='0' and Status='P' and (OrderID =@OrderID or OrderID=@OrderID12 or OrderID=@OrderID123) and OrdDate between @ParamDate and @ParamDate1</SqlCommand>
+      </VW_OrderDetailTable>
+      <restaurantMaster Ref="4" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>restaurantMaster</Alias>
+        <Columns isList="true" count="17">
+          <value>Address1,System.String</value>
+          <value>Address2,System.String</value>
+          <value>City,System.String</value>
+          <value>Country,System.String</value>
+          <value>Created_By,System.String</value>
+          <value>Created_Date,System.DateTime</value>
+          <value>Deleted,System.String</value>
+          <value>guid,System.String</value>
+          <value>ID,System.String</value>
+          <value>Logo,System.String</value>
+          <value>Modified_By,System.String</value>
+          <value>Modified_Date,System.DateTime</value>
+          <value>Name,System.String</value>
+          <value>Picture,System.String</value>
+          <value>Row_Version,System.Int64</value>
+          <value>State,System.String</value>
+          <value>TelNo,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>restaurantMaster</Name>
+        <NameInSource>Connection</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select * from restaurantMaster</SqlCommand>
+      </restaurantMaster>
+      <taxMaster Ref="5" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>taxMaster</Alias>
+        <Columns isList="true" count="10">
+          <value>Created_By,System.String</value>
+          <value>Created_Date,System.DateTime</value>
+          <value>Deleted,System.String</value>
+          <value>Flag,System.String</value>
+          <value>ID,System.String</value>
+          <value>Modified_By,System.String</value>
+          <value>Modified_Date,System.DateTime</value>
+          <value>Name,System.String</value>
+          <value>Percentage,System.String</value>
+          <value>Row_Version,System.Int64</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>taxMaster</Name>
+        <NameInSource>Connection</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select * from taxMaster</SqlCommand>
+      </taxMaster>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="6" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="6">
+        <PageFooterBand1 Ref="7" type="PageFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,23.2,7.5,0.8</ClientRectangle>
+          <Components isList="true" count="2">
+            <FooterVW_OrderDetailTable_OrderID Ref="8" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,-0.4,6.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>FooterVW_OrderDetailTable_OrderID</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </FooterVW_OrderDetailTable_OrderID>
+            <FooterVW_OrderDetailTable_Waiter Ref="9" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.4,-0.4,6.6,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>FooterVW_OrderDetailTable_Waiter</Name>
+              <Page isRef="6" />
+              <Parent isRef="7" />
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </FooterVW_OrderDetailTable_Waiter>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>PageFooterBand1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </PageFooterBand1>
+        <Text6 Ref="10" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>26,26.9,1.6,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,8</Font>
+          <HorAlignment>Right</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text6</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Text>{PageNumber}</Text>
+          <TextBrush>Black</TextBrush>
+          <VertAlignment>Center</VertAlignment>
+        </Text6>
+        <ReportTitleBand1 Ref="11" type="ReportTitleBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,7.5,3</ClientRectangle>
+          <Components isList="true" count="3">
+            <Text8 Ref="12" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>0,1.8,7.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>dfba742065b6427aa5af5c1582b613d8</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="6" />
+              <Parent isRef="11" />
+              <Text>{restaurantMaster.Address1} , {restaurantMaster.Address2},{restaurantMaster.City}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text8>
+            <Picture1 Ref="13" type="Image" isKey="true">
+              <AspectRatio>True</AspectRatio>
+              <Brush>Transparent</Brush>
+              <ClientRectangle>1.2,0.4,5.12,1.47</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Guid>bc7eae59b52f47f39fede6af617907b2</Guid>
+              <Image>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</Image>
+              <Name>Picture1</Name>
+              <Page isRef="6" />
+              <Parent isRef="11" />
+              <Stretch>True</Stretch>
+            </Picture1>
+            <Text10 Ref="14" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>0,2.4,7.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Guid>f1a0b1bd428f4f029d748a8b9747ac54</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="6" />
+              <Parent isRef="11" />
+              <Text>Tel No : {restaurantMaster.TelNo}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text10>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ReportTitleBand1</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </ReportTitleBand1>
+        <HeaderVW_OrderDetailTable Ref="15" type="HeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,4.2,7.5,1.8</ClientRectangle>
+          <Components isList="true" count="10">
+            <Text1 Ref="16" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>3.6,1.2,2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Guid>900c6306bc94415ab9d7f29e0d438fa2</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="6" />
+              <Parent isRef="15" />
+              <Text>{Today}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="17" type="DateFormat" isKey="true">
+                <StringFormat>dd/MM/yyyy</StringFormat>
+              </TextFormat>
+              <Type>Expression</Type>
+            </Text1>
+            <Text2 Ref="18" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>5.6,1.2,1.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Guid>af6629779894438dbef897aada229982</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="6" />
+              <Parent isRef="15" />
+              <Text>{Time}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="19" type="TimeFormat" isKey="true">
+                <StringFormat>T</StringFormat>
+              </TextFormat>
+              <Type>SystemVariables</Type>
+            </Text2>
+            <Text7 Ref="20" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,1.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="6" />
+              <Parent isRef="15" />
+              <Text>Table # :</Text>
+              <TextBrush>Black</TextBrush>
+            </Text7>
+            <Text9 Ref="21" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0.6,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="6" />
+              <Parent isRef="15" />
+              <Text>POS Title:Cash</Text>
+              <TextBrush>Black</TextBrush>
+            </Text9>
+            <Text15 Ref="22" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,1.2,1,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text15</Name>
+              <Page isRef="6" />
+              <Parent isRef="15" />
+              <Text>Rcpt#:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text15>
+            <Text16 Ref="23" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>1.6,0,1,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text16</Name>
+              <Page isRef="6" />
+              <Parent isRef="15" />
+              <Text>{VW_OrderDetailTable.Table_ID}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text16>
+            <Text17 Ref="24" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>2.8,0,0.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text17</Name>
+              <Page isRef="6" />
+              <Parent isRef="15" />
+              <Text>OP:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text17>
+            <Text19 Ref="25" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>3.6,0,2.2,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <NullValue>-</NullValue>
+              <Page isRef="6" />
+              <Parent isRef="15" />
+              <Text>{VW_OrderDetailTable.contact_name}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+            </Text19>
+            <Text20 Ref="26" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>1,1.2,2.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text20</Name>
+              <Page isRef="6" />
+              <Parent isRef="15" />
+              <Text>{VW_OrderDetailTable.OrderID}</Text>
+              <TextBrush>Black</TextBrush>
+            </Text20>
+            <HorizontalLinePrimitive1 Ref="27" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>0,1.8,7.4,0.0254</ClientRectangle>
+              <Color>Black</Color>
+              <EndCap Ref="28" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Name>HorizontalLinePrimitive1</Name>
+              <Page isRef="6" />
+              <Parent isRef="15" />
+              <StartCap Ref="29" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+              <Style>Dot</Style>
+            </HorizontalLinePrimitive1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>HeaderVW_OrderDetailTable</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </HeaderVW_OrderDetailTable>
+        <DataVW_OrderDetailTable Ref="30" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,6.8,7.5,0.8</ClientRectangle>
+          <Components isList="true" count="6">
+            <Text3 Ref="31" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>0,0,1,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="6" />
+              <Parent isRef="30" />
+              <Text>{VW_OrderDetailTable.Qty}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text3>
+            <Text4 Ref="32" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>1,0,4.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="6" />
+              <Parent isRef="30" />
+              <Text>{VW_OrderDetailTable.Description}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text4>
+            <Text5 Ref="33" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>5.6,0,0.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Guid>a15fee70fb9e4b7e8a52a2649f0cdc70</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="6" />
+              <Parent isRef="30" />
+              <Text>Rm</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text5>
+            <Text12 Ref="34" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>6.2,0,1,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="6" />
+              <Parent isRef="30" />
+              <Text>{VW_OrderDetailTable.Price}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text12>
+            <Text21 Ref="35" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>4,0.4,0.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text21</Name>
+              <Page isRef="6" />
+              <Parent isRef="30" />
+              <Text>@ RM</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text21>
+            <Text22 Ref="36" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>4.8,0.4,0.8,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text22</Name>
+              <Page isRef="6" />
+              <Parent isRef="30" />
+              <Text>{VW_OrderDetailTable.UnitPrice}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text22>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataSourceName>VW_OrderDetailTable</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataVW_OrderDetailTable</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+          <Sort isList="true" count="0" />
+        </DataVW_OrderDetailTable>
+        <FooterVW_OrderDetailTable Ref="37" type="FooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,8.4,7.5,6.6</ClientRectangle>
+          <Components isList="true" count="27">
+            <Text13 Ref="38" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.4,0.2,1.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text13</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>SUB TOTAL</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text13>
+            <Text14 Ref="39" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.6,0.2,0.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text14</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>RM</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text14>
+            <Text23 Ref="40" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.6,0.8,0.6,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>25da5ec1dee94252bad584581bb12cd0</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>RM</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text23>
+            <Text24 Ref="41" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.6,1.2,0.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>93517897761143b0a015bb9606927cbb</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text24</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>RM</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text24>
+            <Text25 Ref="42" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.6,1.8,0.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>04fe63520be240cb99908581d5468cf0</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text25</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>RM</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text25>
+            <Text27 Ref="43" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.4,1.2,1.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text27</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>Adjustment</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text27>
+            <Text28 Ref="44" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.4,1.8,1.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text28</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>Discount</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text28>
+            <Text18 Ref="45" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>3.4,0.8,2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text18</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>{taxMaster.Name}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text18>
+            <Text26 Ref="46" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>6.2,0.2,1,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text26</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>{Sum(DataVW_OrderDetailTable,VW_OrderDetailTable.Price)}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextFormat Ref="47" type="NumberFormat" isKey="true">
+                <GroupSeparator>,</GroupSeparator>
+                <NegativePattern>1</NegativePattern>
+              </TextFormat>
+              <Type>Totals</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text26>
+            <Text29 Ref="48" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>6.2,0.8,1,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text29</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>{VW_OrderDetailTable.Parameters["@ParamTax"].ParameterValue}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text29>
+            <Text30 Ref="49" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>6.2,1.2,1,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text30</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>{VW_OrderDetailTable.TaxAdj}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text30>
+            <Text31 Ref="50" type="Text" isKey="true">
+              <Border>None;Black;1;Dot;False;4;Black</Border>
+              <Brush>White</Brush>
+              <ClientRectangle>6.2,1.8,1,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text31</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>{VW_OrderDetailTable.Parameters["@ParamDed"].ParameterValue}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text31>
+            <Text32 Ref="51" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.4,2.6,1.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text32</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>TOTAL</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text32>
+            <Text33 Ref="52" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5,2.6,0.8,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text33</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>RM</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text33>
+            <Text34 Ref="53" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>5.8,2.6,1.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11,Bold</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text34</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>{VW_OrderDetailTable.Parameters["@ParamNet"].ParameterValue}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text34>
+            <Text35 Ref="54" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.4,3.2,1.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text35</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>CASH</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text35>
+            <Text36 Ref="55" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>3.4,3.8,1.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text36</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>Change</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text36>
+            <Text37 Ref="56" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.2,3.2,0.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text37</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>RM</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text37>
+            <Text38 Ref="57" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>5.2,3.8,0.6,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>d54dee4e81d74b95aae5755f9414aa0a</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text38</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>RM</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text38>
+            <Text39 Ref="58" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>5.8,3.2,1.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text39</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>{VW_OrderDetailTable.Parameters["@Cash"].ParameterValue}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+              <VertAlignment>Center</VertAlignment>
+            </Text39>
+            <Text40 Ref="59" type="Text" isKey="true">
+              <Brush>White</Brush>
+              <ClientRectangle>5.8,3.8,1.4,0.6</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text40</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>{VW_OrderDetailTable.Parameters["@Change"].ParameterValue}</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text40>
+            <Text42 Ref="60" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,5,7.2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text42</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>TERIMA KASIH, SILA DATANG LAGI !!!</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text42>
+            <Text43 Ref="61" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,5.4,7.2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text43</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>Di-miliki oleh :</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text43>
+            <Text44 Ref="62" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0.2,5.8,7.2,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text44</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <Text>SERBA DINAMIK IMPEX SDN BHD (527908-m)</Text>
+              <TextBrush>Black</TextBrush>
+              <VertAlignment>Center</VertAlignment>
+            </Text44>
+            <HorizontalLinePrimitive2 Ref="63" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>0,2.6,7.4,0.0254</ClientRectangle>
+              <Color>Black</Color>
+              <EndCap Ref="64" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Name>HorizontalLinePrimitive2</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <StartCap Ref="65" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+              <Style>Dot</Style>
+            </HorizontalLinePrimitive2>
+            <HorizontalLinePrimitive3 Ref="66" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>0,4.6,7.4,0.0254</ClientRectangle>
+              <Color>Black</Color>
+              <EndCap Ref="67" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Guid>d669686cb72f497db2334d312f72294b</Guid>
+              <Name>HorizontalLinePrimitive3</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <StartCap Ref="68" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+              <Style>Dot</Style>
+            </HorizontalLinePrimitive3>
+            <HorizontalLinePrimitive4 Ref="69" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>0,4.8,7.4,0.0254</ClientRectangle>
+              <Color>Black</Color>
+              <EndCap Ref="70" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Guid>8fcda3de82b54b8081318185f722c6d6</Guid>
+              <Name>HorizontalLinePrimitive4</Name>
+              <Page isRef="6" />
+              <Parent isRef="37" />
+              <StartCap Ref="71" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+              <Style>Dot</Style>
+            </HorizontalLinePrimitive4>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>FooterVW_OrderDetailTable</Name>
+          <Page isRef="6" />
+          <Parent isRef="6" />
+        </FooterVW_OrderDetailTable>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>29606c9db45d4095a9b9c6c567a1fc51</Guid>
+      <Margins>0,1,0,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>25</PageHeight>
+      <PageWidth>8.5</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="72" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="73" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>11/1/2012 3:26:17 PM</ReportChanged>
+  <ReportCreated>6/18/2012 12:09:33 PM</ReportCreated>
+  <ReportFile>C:\inetpub\wwwroot\RestaurantSS\AST_Reports - Copy\ReceiptCashier.mrt</ReportFile>
+  <ReportGuid>08e40a4e81c2493c9abd0989988e6984</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2012.1.1300</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+        #endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

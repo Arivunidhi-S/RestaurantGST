@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <Connection Ref="2" type="Stimulsoft.Report.Dictionary.StiSqlDatabase" isKey="true">
+        <Alias>Connection</Alias>
+        <ConnectionString>Integrated Security=False;Data Source=Localhost;Initial Catalog=Restaurant;Password=atserba;User ID=sa</ConnectionString>
+        <Name>Connection</Name>
+      </Connection>
+    </Databases>
+    <DataSources isList="true" count="1">
+      <DataSource1 Ref="3" type="Stimulsoft.Report.Dictionary.StiSqlSource" isKey="true">
+        <Alias>DataSource1</Alias>
+        <Columns isList="true" count="23">
+          <value>OrderID,System.Decimal</value>
+          <value>MenuID,System.Decimal</value>
+          <value>DetailID,System.Decimal</value>
+          <value>Qty,System.Int32</value>
+          <value>Price,System.Decimal</value>
+          <value>Deduction,System.Decimal</value>
+          <value>Created_By,System.Decimal</value>
+          <value>Expr1,System.Decimal</value>
+          <value>TotalPrice,System.Decimal</value>
+          <value>Tax,System.Decimal</value>
+          <value>OrdDate,System.DateTime</value>
+          <value>Waiter,System.String</value>
+          <value>TaxOrg,System.String</value>
+          <value>TotDed,System.Decimal</value>
+          <value>Table_ID,System.Decimal</value>
+          <value>Name,System.String</value>
+          <value>ID,System.Decimal</value>
+          <value>Expr2,System.String</value>
+          <value>Expr3,System.Decimal</value>
+          <value>Kitchen,System.Decimal</value>
+          <value>Category,System.Decimal</value>
+          <value>category_ID,System.Decimal</value>
+          <value>contact_name,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>DataSource1</Name>
+        <NameInSource>Connection</NameInSource>
+        <Parameters isList="true" count="2">
+          <value>_x0040_OrdID,,12,100</value>
+          <value>_x0040_KID,,12,100</value>
+        </Parameters>
+        <SqlCommand>SELECT     dbo.orderDetail.OrderID, dbo.orderDetail.MenuID, dbo.orderDetail.DetailID, dbo.orderDetail.Qty, dbo.orderDetail.Price, dbo.orderDetail.Deduction, 
+	dbo.orderDetail.Created_By, dbo.orderMaster.OrderID AS Expr1, dbo.orderMaster.TotalPrice, dbo.orderMaster.Tax, dbo.orderMaster.OrdDate, dbo.orderMaster.Waiter, 
+	dbo.orderMaster.TaxOrg, dbo.orderMaster.TotDed, dbo.orderMaster.Table_ID, dbo.kitchenMaster.Name, dbo.kitchenMaster.ID, dbo.menuMaster.Name AS Expr2, 
+	dbo.menuMaster.ID AS Expr3, dbo.categoryMaster.Kitchen, dbo.menuMaster.Category, dbo.categoryMaster.category_ID,
+	dbo.Users_tbl.contact_name  
+	FROM         
+
+	dbo.orderMaster 
+	INNER JOIN dbo.orderDetail ON dbo.orderDetail.OrderID = dbo.orderMaster.OrderID INNER JOIN 
+dbo.menuMaster  ON dbo.menuMaster.ID = dbo.orderDetail.MenuID INNER JOIN 
+dbo.categoryMaster on dbo.menuMaster.Category = dbo.categoryMaster.category_ID INNER JOIN 
+dbo.kitchenMaster ON dbo.categoryMaster.Kitchen = dbo.kitchenMaster.ID INNER JOIN 
+dbo.Users_tbl on dbo.Users_tbl.user_aid=dbo.orderMaster.waiter
+
+where dbo.orderDetail.Print_Status='False' and dbo.orderMaster.OrderID=@OrdID and dbo.kitchenMaster.ID =@KID and dbo.orderMaster.Deleted='False'</SqlCommand>
+      </DataSource1>
+    </DataSources>
+    <Relations isList="true" count="0" />
+    <Report isRef="0" />
+    <Variables isList="true" count="0" />
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="0" />
+  <Pages isList="true" count="1">
+    <Page1 Ref="4" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="5">
+        <PageFooterBand1 Ref="5" type="PageFooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,23.2,7.5,0.8</ClientRectangle>
+          <Components isList="true" count="2">
+            <FooterVW_OrderDetailTable_OrderID Ref="6" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,-0.4,6.4,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>FooterVW_OrderDetailTable_OrderID</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </FooterVW_OrderDetailTable_OrderID>
+            <FooterVW_OrderDetailTable_Waiter Ref="7" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>6.4,-0.4,6.6,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>FooterVW_OrderDetailTable_Waiter</Name>
+              <Page isRef="4" />
+              <Parent isRef="5" />
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </FooterVW_OrderDetailTable_Waiter>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>PageFooterBand1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </PageFooterBand1>
+        <Text6 Ref="8" type="Text" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>26,26.9,1.6,0.6</ClientRectangle>
+          <Conditions isList="true" count="0" />
+          <Font>Arial,8</Font>
+          <HorAlignment>Right</HorAlignment>
+          <Margins>0,0,0,0</Margins>
+          <Name>Text6</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Text>{PageNumber}</Text>
+          <TextBrush>Black</TextBrush>
+          <VertAlignment>Center</VertAlignment>
+        </Text6>
+        <HeaderDataSource1 Ref="9" type="HeaderBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,0.4,7.5,1.2</ClientRectangle>
+          <Components isList="true" count="8">
+            <ID1 Ref="10" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>1.25,0.6,1.14,0.33</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>c5950aefa18243bc8ccb7b36121fe9f5</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>ID1</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Text>{DataSource1.OrderID}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </ID1>
+            <Waiter1 Ref="11" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>2.97,0.2,1.49,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>c484bfbc605049d48fca77cb13694dbc</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Waiter1</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Text>{DataSource1.contact_name}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </Waiter1>
+            <PrintDate1 Ref="12" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>2.61,0.6,1.76,0.33</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>8658d0efae924270b163c0712722af30</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>PrintDate1</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Text>{Format("{0:d}", Today)}</Text>
+              <TextBrush>Black</TextBrush>
+            </PrintDate1>
+            <PrintTime1 Ref="13" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>4.47,0.6,1.53,0.33</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>ae49472b40d743b4b0c478cb4c0bc70b</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>PrintTime1</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Text>{Format("{0:T}", Time)}</Text>
+              <TextBrush>Black</TextBrush>
+            </PrintTime1>
+            <Text4 Ref="14" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>2.29,0.2,0.64,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,8</Font>
+              <Guid>ef005ff1f36f4923812f0f3fe8c9c7fd</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Text>OP:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text4>
+            <Text18 Ref="15" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>0.2,0.6,0.85,0.43</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,8</Font>
+              <Guid>bc18e0f328da430c9e62d817dc3b3bb9</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text18</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Text>Rcpt#:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text18>
+            <Text1 Ref="16" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>0.2,0.2,1.07,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,8</Font>
+              <Guid>f1704ac2ddc04d9b8427b021604f8ae4</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Text>Table # :</Text>
+              <TextBrush>Black</TextBrush>
+            </Text1>
+            <UID1 Ref="17" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>1.48,0.2,0.64,0.34</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Guid>c069104c2ad64695949b2d17f0a4bae1</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>UID1</Name>
+              <Page isRef="4" />
+              <Parent isRef="9" />
+              <Text>{DataSource1.Table_ID}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>Expression</Type>
+            </UID1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>HeaderDataSource1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </HeaderDataSource1>
+        <DataDataSource1 Ref="18" type="DataBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,2.4,7.5,0.8</ClientRectangle>
+          <Components isList="true" count="2">
+            <Description1 Ref="19" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0,0.2,4.37,0.36</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9</Font>
+              <Guid>16005eca3f984d199ccfa6b3d483f071</Guid>
+              <Margins>0,0,0,0</Margins>
+              <Name>Description1</Name>
+              <Page isRef="4" />
+              <Parent isRef="18" />
+              <Text>{DataSource1.Expr2}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <Type>Expression</Type>
+            </Description1>
+            <Qty1 Ref="20" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>4.54,0.2,0.58,0.36</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,9</Font>
+              <Guid>30f905891e144ae0aeb0e6ffc6d2ad48</Guid>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Qty1</Name>
+              <Page isRef="4" />
+              <Parent isRef="18" />
+              <Text>{DataSource1.Qty}</Text>
+              <TextBrush>Black</TextBrush>
+              <Type>DataColumn</Type>
+            </Qty1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataSourceName>DataSource1</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DataDataSource1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+          <Sort isList="true" count="0" />
+        </DataDataSource1>
+        <FooterDataSource1 Ref="21" type="FooterBand" isKey="true">
+          <Brush>Transparent</Brush>
+          <ClientRectangle>0,4,7.5,0.8</ClientRectangle>
+          <Components isList="true" count="1">
+            <FooterDataSource1_OrderID Ref="22" type="Text" isKey="true">
+              <Brush>Transparent</Brush>
+              <ClientRectangle>0,0,13,0.8</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10,Bold</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>FooterDataSource1_OrderID</Name>
+              <Page isRef="4" />
+              <Parent isRef="21" />
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+              <VertAlignment>Center</VertAlignment>
+            </FooterDataSource1_OrderID>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>FooterDataSource1</Name>
+          <Page isRef="4" />
+          <Parent isRef="4" />
+        </FooterDataSource1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>29606c9db45d4095a9b9c6c567a1fc51</Guid>
+      <Margins>0,1,0,1</Margins>
+      <Name>Page1</Name>
+      <PageHeight>25</PageHeight>
+      <PageWidth>8.5</PageWidth>
+      <Report isRef="0" />
+      <Watermark Ref="23" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="24" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAlias>Report</ReportAlias>
+  <ReportChanged>11/7/2012 4:36:35 PM</ReportChanged>
+  <ReportCreated>6/18/2012 12:09:33 PM</ReportCreated>
+  <ReportFile>C:\Users\SARA\Desktop\KITCHEN.mrt</ReportFile>
+  <ReportGuid>e012e8741c5642d0a4887492e5231aeb</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2012.1.1300</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+        #endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

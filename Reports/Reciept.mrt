@@ -1,0 +1,842 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<StiSerializer version="1.02" type="Net" application="StiReport">
+  <Dictionary Ref="1" type="Dictionary" isKey="true">
+    <BusinessObjects isList="true" count="0" />
+    <Databases isList="true" count="1">
+      <restaurant Ref="2" type="Stimulsoft.Report.Dictionary.StiOleDbDatabase" isKey="true">
+        <Alias>restaurant</Alias>
+        <ConnectionStringEncrypted>4Fb1iEZZ+91GRylEcQQtP4twgethWfNpaWHVeOqM4WflEvspT1m6pHwTnHjoHCRnnVr168hZSwVFbKEEYRToY43y2+3dSgqZRkr9vQ==</ConnectionStringEncrypted>
+        <Name>restaurant</Name>
+      </restaurant>
+    </Databases>
+    <DataSources isList="true" count="6">
+      <restaurantMaster Ref="3" type="Stimulsoft.Report.Dictionary.StiOleDbSource" isKey="true">
+        <Alias>restaurantMaster</Alias>
+        <Columns isList="true" count="9">
+          <value>Name,System.String</value>
+          <value>Address1,System.String</value>
+          <value>Address2,System.String</value>
+          <value>City,System.String</value>
+          <value>State,System.String</value>
+          <value>Country,System.String</value>
+          <value>Logo,System.String</value>
+          <value>Picture,System.Object</value>
+          <value>TelNo,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>restaurantMaster</Name>
+        <NameInSource>restaurant</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select * from restaurantMaster</SqlCommand>
+      </restaurantMaster>
+      <orderMaster Ref="4" type="Stimulsoft.Report.Dictionary.StiOleDbSource" isKey="true">
+        <Alias>orderMaster</Alias>
+        <Columns isList="true" count="9">
+          <value>ID,System.Double</value>
+          <value>UID,System.Double</value>
+          <value>OrdPrice,System.Double</value>
+          <value>Tax,System.Double</value>
+          <value>TotalPrice,System.Double</value>
+          <value>Status,System.String</value>
+          <value>OrdDate,System.DateTime</value>
+          <value>Waiter,System.String</value>
+          <value>Cashier,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>orderMaster</Name>
+        <NameInSource>restaurant</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select * from orderMaster</SqlCommand>
+      </orderMaster>
+      <orderDetail Ref="5" type="Stimulsoft.Report.Dictionary.StiOleDbSource" isKey="true">
+        <Alias>orderDetail</Alias>
+        <Columns isList="true" count="7">
+          <value>ID,System.Double</value>
+          <value>OrderID,System.Double</value>
+          <value>MenuID,System.Double</value>
+          <value>Qty,System.Int32</value>
+          <value>Price,System.Double</value>
+          <value>Status,System.String</value>
+          <value>Split,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>orderDetail</Name>
+        <NameInSource>restaurant</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select * from orderDetail</SqlCommand>
+      </orderDetail>
+      <userMaster Ref="6" type="Stimulsoft.Report.Dictionary.StiOleDbSource" isKey="true">
+        <Alias>userMaster</Alias>
+        <Columns isList="true" count="6">
+          <value>ID,System.Double</value>
+          <value>UID,System.String</value>
+          <value>PWD,System.String</value>
+          <value>Description,System.String</value>
+          <value>Type,System.String</value>
+          <value>Supervisor,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>userMaster</Name>
+        <NameInSource>restaurant</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select * from userMaster</SqlCommand>
+      </userMaster>
+      <menuMaster Ref="7" type="Stimulsoft.Report.Dictionary.StiOleDbSource" isKey="true">
+        <Alias>menuMaster</Alias>
+        <Columns isList="true" count="8">
+          <value>ID,System.Double</value>
+          <value>Category,System.Double</value>
+          <value>Name,System.String</value>
+          <value>UnitPrice,System.Double</value>
+          <value>Image,System.String</value>
+          <value>Available,System.String</value>
+          <value>Picture,System.Object</value>
+          <value>Description,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>menuMaster</Name>
+        <NameInSource>restaurant</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select * from menuMaster</SqlCommand>
+      </menuMaster>
+      <taxMaster Ref="8" type="Stimulsoft.Report.Dictionary.StiOleDbSource" isKey="true">
+        <Alias>taxMaster</Alias>
+        <Columns isList="true" count="4">
+          <value>ID,System.Double</value>
+          <value>Name,System.String</value>
+          <value>Percentage,System.Double</value>
+          <value>Flag,System.String</value>
+        </Columns>
+        <CommandTimeout>30</CommandTimeout>
+        <Dictionary isRef="1" />
+        <Name>taxMaster</Name>
+        <NameInSource>restaurant</NameInSource>
+        <Parameters isList="true" count="0" />
+        <SqlCommand>select * from taxMaster</SqlCommand>
+      </taxMaster>
+    </DataSources>
+    <Relations isList="true" count="3">
+      <orderDetail Ref="9" type="DataRelation" isKey="true">
+        <Alias>orderMaster to orderDetail</Alias>
+        <ChildColumns isList="true" count="1">
+          <value>ID</value>
+        </ChildColumns>
+        <ChildSource isRef="4" />
+        <Dictionary isRef="1" />
+        <Name>orderDetail</Name>
+        <NameInSource>orderDetail</NameInSource>
+        <ParentColumns isList="true" count="1">
+          <value>OrderID</value>
+        </ParentColumns>
+        <ParentSource isRef="5" />
+      </orderDetail>
+      <userMaster Ref="10" type="DataRelation" isKey="true">
+        <Alias>orderMaster to userMaster</Alias>
+        <ChildColumns isList="true" count="1">
+          <value>Waiter</value>
+        </ChildColumns>
+        <ChildSource isRef="4" />
+        <Dictionary isRef="1" />
+        <Name>userMaster</Name>
+        <NameInSource>userMaster</NameInSource>
+        <ParentColumns isList="true" count="1">
+          <value>UID</value>
+        </ParentColumns>
+        <ParentSource isRef="6" />
+      </userMaster>
+      <menuMaster Ref="11" type="DataRelation" isKey="true">
+        <Alias>orderDetail to menuMaster</Alias>
+        <ChildColumns isList="true" count="1">
+          <value>MenuID</value>
+        </ChildColumns>
+        <ChildSource isRef="5" />
+        <Dictionary isRef="1" />
+        <Name>menuMaster</Name>
+        <NameInSource>menuMaster</NameInSource>
+        <ParentColumns isList="true" count="1">
+          <value>ID</value>
+        </ParentColumns>
+        <ParentSource isRef="7" />
+      </menuMaster>
+    </Relations>
+    <Report isRef="0" />
+    <Variables isList="true" count="8">
+      <value>Formula_x0020_Fields,Address,Address,System.String,_x007B_restaurantMaster.Address1_x007D__x0020__x002B__x0020__x0027__x002C__x0027__x0020__x002B__x0020__x007B_restaurantMaster.Address2_x007D__x0020__x002B__x0020__x0027__x002C__x0027__x0020__x002B__x0020__x007B_restaurantMaster.City_x007D_,True,False</value>
+      <value>Formula_x0020_Fields,Total,Total,System.String,sum_x0028__x007B_orderDetail.Price_x007D__x0029_,True,False</value>
+      <value>Formula_x0020_Fields,NetTotal,NetTotal,System.String,_x007B__x0040_Total_x007D__x0020__x002B__x0020__x007B_orderMaster.Tax_x007D_,True,False</value>
+      <value>Formula_x0020_Fields,DateTime,DateTime,System.String,CurrentDateTime,True,False</value>
+      <value>Formula_x0020_Fields,tax,tax,System.String,_x007B_taxMaster.Percentage_x007D__x0020__x0026__x0020__x0022__x0025__x0020__x0022__x0020__x0026__x0020__x007B_taxMaster.Name_x007D_,True,False</value>
+      <value>ParameterField,OrderID,OrderID,,System.Double,,False,False,True</value>
+      <value>ParameterField,Cash,Cash,,System.Double,,False,False,True</value>
+      <value>ParameterField,Change,Change,,System.Double,,False,False,True</value>
+    </Variables>
+  </Dictionary>
+  <EngineVersion>EngineV2</EngineVersion>
+  <GlobalizationStrings isList="true" count="0" />
+  <MetaTags isList="true" count="1">
+    <value>InternalVersion,_x0032_011.2.1012_x0020_from_x0020_14-Jun-2011</value>
+  </MetaTags>
+  <Pages isList="true" count="1">
+    <Page1 Ref="12" type="Page" isKey="true">
+      <Border>None;Black;2;Solid;False;4;Black</Border>
+      <Brush>Transparent</Brush>
+      <Components isList="true" count="5">
+        <ReportHeaderSection1 Ref="13" type="ReportTitleBand" isKey="true">
+          <Brush>White</Brush>
+          <ClientRectangle>0,0.4,21,1.6</ClientRectangle>
+          <Components isList="true" count="4">
+            <Name1 Ref="14" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>0.21,0.21,6.82,0.43</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Name1</Name>
+              <Page isRef="12" />
+              <Parent isRef="13" />
+              <Text>{restaurantMaster.Name}</Text>
+              <TextBrush>Black</TextBrush>
+            </Name1>
+            <Address1 Ref="15" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>0.21,0.64,6.82,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Address1</Name>
+              <Page isRef="12" />
+              <Parent isRef="13" />
+              <Text>{Address}</Text>
+              <TextBrush>Black</TextBrush>
+            </Address1>
+            <TelNo1 Ref="16" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>2.77,1.07,4.26,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>TelNo1</Name>
+              <Page isRef="12" />
+              <Parent isRef="13" />
+              <Text>{restaurantMaster.TelNo}</Text>
+              <TextBrush>Black</TextBrush>
+            </TelNo1>
+            <Text3 Ref="17" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>1.76,1.07,0.85,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,10</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text3</Name>
+              <Page isRef="12" />
+              <Parent isRef="13" />
+              <Text>TEL :</Text>
+              <TextBrush>Black</TextBrush>
+            </Text3>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ReportHeaderSection1</Name>
+          <Page isRef="12" />
+          <Parent isRef="12" />
+        </ReportHeaderSection1>
+        <PageFooterSection1 Ref="18" type="PageFooterBand" isKey="true">
+          <Brush>HatchBrush,BackwardDiagonal,DarkGray,White</Brush>
+          <ClientRectangle>0,29.31,21,0.39</ClientRectangle>
+          <Components isList="true" count="0" />
+          <Conditions isList="true" count="0" />
+          <Name>PageFooterSection1</Name>
+          <Page isRef="12" />
+          <Parent isRef="12" />
+        </PageFooterSection1>
+        <PageHeaderSection1 Ref="19" type="PageHeaderBand" isKey="true">
+          <Brush>White</Brush>
+          <ClientRectangle>0,2.8,21,1.28</ClientRectangle>
+          <Components isList="true" count="9">
+            <ID1 Ref="20" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>1.19,0.85,0.64,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>ID1</Name>
+              <Page isRef="12" />
+              <Parent isRef="19" />
+              <Text>{orderMaster.ID}</Text>
+              <TextBrush>Black</TextBrush>
+            </ID1>
+            <Supervisor1 Ref="21" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>4.69,0,1.49,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Supervisor1</Name>
+              <Page isRef="12" />
+              <Parent isRef="19" />
+              <Text>{orderMaster.userMaster.Supervisor}</Text>
+              <TextBrush>Black</TextBrush>
+            </Supervisor1>
+            <Waiter1 Ref="22" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>2.98,0,1.49,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Waiter1</Name>
+              <Page isRef="12" />
+              <Parent isRef="19" />
+              <Text>{orderMaster.Waiter}</Text>
+              <TextBrush>Black</TextBrush>
+            </Waiter1>
+            <PrintDate1 Ref="23" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>2.62,0.85,1.6,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>PrintDate1</Name>
+              <Page isRef="12" />
+              <Parent isRef="19" />
+              <Text>{Format("{0:d}", Today)}</Text>
+              <TextBrush>Black</TextBrush>
+            </PrintDate1>
+            <PrintTime1 Ref="24" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>4.69,0.85,1.15,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>PrintTime1</Name>
+              <Page isRef="12" />
+              <Parent isRef="19" />
+              <Text>{Format("{0:T}", Time)}</Text>
+              <TextBrush>Black</TextBrush>
+            </PrintTime1>
+            <Text4 Ref="25" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>2.3,0,0.64,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text4</Name>
+              <Page isRef="12" />
+              <Parent isRef="19" />
+              <Text>OP:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text4>
+            <Text11 Ref="26" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>0.2,0.43,1.94,0.43</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text11</Name>
+              <Page isRef="12" />
+              <Parent isRef="19" />
+              <Text>POS Title:Cash</Text>
+              <TextBrush>Black</TextBrush>
+            </Text11>
+            <Text18 Ref="27" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>0.21,0.85,0.85,0.43</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text18</Name>
+              <Page isRef="12" />
+              <Parent isRef="19" />
+              <Text>Rcpt#:</Text>
+              <TextBrush>Black</TextBrush>
+            </Text18>
+            <Line1 Ref="28" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>0,1.16,7.26,0.0254</ClientRectangle>
+              <Color>Black</Color>
+              <EndCap Ref="29" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Name>Line1</Name>
+              <Page isRef="12" />
+              <Parent isRef="19" />
+              <Size>0</Size>
+              <StartCap Ref="30" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+              <Style>Dot</Style>
+            </Line1>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>PageHeaderSection1</Name>
+          <Page isRef="12" />
+          <Parent isRef="12" />
+        </PageHeaderSection1>
+        <DetailSection1 Ref="31" type="DataBand" isKey="true">
+          <Brush>White</Brush>
+          <BusinessObjectGuid isNull="true" />
+          <ClientRectangle>0,4.88,21,1.25</ClientRectangle>
+          <Components isList="true" count="6">
+            <Qty1 Ref="32" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>0,0.21,0.48,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Qty1</Name>
+              <Page isRef="12" />
+              <Parent isRef="31" />
+              <Text>{orderMaster.orderDetail.Qty}</Text>
+              <TextBrush>Black</TextBrush>
+            </Qty1>
+            <Price1 Ref="33" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>5.54,0.21,0.64,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Price1</Name>
+              <Page isRef="12" />
+              <Parent isRef="31" />
+              <Text>{orderMaster.orderDetail.Price}</Text>
+              <TextBrush>Black</TextBrush>
+            </Price1>
+            <Text12 Ref="34" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>5.12,0.21,0.44,0.43</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text12</Name>
+              <Page isRef="12" />
+              <Parent isRef="31" />
+              <Text>RM</Text>
+              <TextBrush>Black</TextBrush>
+            </Text12>
+            <Description1 Ref="35" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <CanGrow>True</CanGrow>
+              <ClientRectangle>0.64,0.21,4.25,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Description1</Name>
+              <Page isRef="12" />
+              <Parent isRef="31" />
+              <Text>{orderMaster.orderDetail.menuMaster.Description}</Text>
+              <TextBrush>Black</TextBrush>
+              <TextOptions>HotkeyPrefix=None, LineLimit=False, RightToLeft=False, Trimming=None, WordWrap=True, Angle=0, FirstTabOffset=40, DistanceBetweenTabs=20,</TextOptions>
+            </Description1>
+            <UnitPrice1 Ref="36" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>2.62,0.85,1.27,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>UnitPrice1</Name>
+              <Page isRef="12" />
+              <Parent isRef="31" />
+              <Text>{orderMaster.orderDetail.menuMaster.UnitPrice}</Text>
+              <TextBrush>Black</TextBrush>
+            </UnitPrice1>
+            <Text13 Ref="37" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>1.9,0.85,0.87,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text13</Name>
+              <Page isRef="12" />
+              <Parent isRef="31" />
+              <Text>@ RM</Text>
+              <TextBrush>Black</TextBrush>
+            </Text13>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <DataSourceName>restaurantMaster</DataSourceName>
+          <Filters isList="true" count="0" />
+          <Name>DetailSection1</Name>
+          <Page isRef="12" />
+          <Parent isRef="12" />
+        </DetailSection1>
+        <ReportFooterSection1 Ref="38" type="FooterBand" isKey="true">
+          <Brush>White</Brush>
+          <ClientRectangle>0,6.93,21,5.91</ClientRectangle>
+          <Components isList="true" count="24">
+            <Text5 Ref="39" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>1.28,0.21,1.92,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text5</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Text>SUB TOTAL</Text>
+              <TextBrush>Black</TextBrush>
+            </Text5>
+            <Total1 Ref="40" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>5.12,0.21,0.96,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Total1</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Text>{Total}</Text>
+              <TextBrush>Black</TextBrush>
+            </Total1>
+            <Text8 Ref="41" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>3.82,1.71,1.07,0.64</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,11,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text8</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Text>RM</Text>
+              <TextBrush>Black</TextBrush>
+            </Text8>
+            <Text7 Ref="42" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>1.07,1.71,2.34,0.64</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,11,Bold</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text7</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Text>TOTAL</Text>
+              <TextBrush>Black</TextBrush>
+            </Text7>
+            <Text16 Ref="43" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>4.28,0.21,0.6,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text16</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Text>RM</Text>
+              <TextBrush>Black</TextBrush>
+            </Text16>
+            <Text17 Ref="44" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>4.28,0.85,0.6,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text17</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Text>RM</Text>
+              <TextBrush>Black</TextBrush>
+            </Text17>
+            <Tax1 Ref="45" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>5.12,0.85,0.96,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Tax1</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Text>{orderMaster.Tax}</Text>
+              <TextBrush>Black</TextBrush>
+            </Tax1>
+            <NetTotal1 Ref="46" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>4.69,1.71,1.49,0.45</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,11</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>NetTotal1</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Text>{NetTotal}</Text>
+              <TextBrush>Black</TextBrush>
+            </NetTotal1>
+            <Text2 Ref="47" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>4.28,2.56,0.6,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text2</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Text>RM</Text>
+              <TextBrush>Black</TextBrush>
+            </Text2>
+            <Text1 Ref="48" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>1.28,2.56,1.92,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text1</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Text>CASH</Text>
+              <TextBrush>Black</TextBrush>
+            </Text1>
+            <Cash1 Ref="49" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>5.12,2.56,1.07,0.34</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Cash1</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Text>{Cash}</Text>
+              <TextBrush>Black</TextBrush>
+            </Cash1>
+            <Text10 Ref="50" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>4.28,2.98,0.6,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text10</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Text>RM</Text>
+              <TextBrush>Black</TextBrush>
+            </Text10>
+            <Text9 Ref="51" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>1.28,2.98,1.92,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text9</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Text>Change</Text>
+              <TextBrush>Black</TextBrush>
+            </Text9>
+            <Change1 Ref="52" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>5.12,2.98,1.07,0.34</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,8</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>Change1</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Text>{Change}</Text>
+              <TextBrush>Black</TextBrush>
+            </Change1>
+            <Text19 Ref="53" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>0.52,4.05,2.77,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,7</Font>
+              <HorAlignment>Right</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text19</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Text>Closed Bil ---&gt;l</Text>
+              <TextBrush>Black</TextBrush>
+            </Text19>
+            <Text21 Ref="54" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>0.21,4.48,6.82,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,7</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text21</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Text>TERIMA KASIH, SILA DATANG LAGI !!!</Text>
+              <TextBrush>Black</TextBrush>
+            </Text21>
+            <DateTime1 Ref="55" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>3.61,4.05,2.56,0.3</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>DateTime1</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Text>{DateTime}</Text>
+              <TextBrush>Black</TextBrush>
+            </DateTime1>
+            <Text22 Ref="56" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>0.21,4.9,6.82,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,7</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text22</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Text>Di-miliki oleh :</Text>
+              <TextBrush>Black</TextBrush>
+            </Text22>
+            <Text23 Ref="57" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>0.21,5.33,6.82,0.39</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial Narrow,7</Font>
+              <HorAlignment>Center</HorAlignment>
+              <Margins>0,0,0,0</Margins>
+              <Name>Text23</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Text>SERBA DINAMIK IMPEX SDN BHD (527908-m)</Text>
+              <TextBrush>Black</TextBrush>
+            </Text23>
+            <tax2 Ref="58" type="Text" isKey="true">
+              <Brush>[0:255:255:255]</Brush>
+              <ClientRectangle>1.28,0.85,1.92,0.4</ClientRectangle>
+              <Conditions isList="true" count="0" />
+              <Font>Arial,7</Font>
+              <Margins>0,0,0,0</Margins>
+              <Name>tax2</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Text>{tax}</Text>
+              <TextBrush>Black</TextBrush>
+            </tax2>
+            <Line2 Ref="59" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>0,0,9.55,0.0254</ClientRectangle>
+              <Color>Black</Color>
+              <EndCap Ref="60" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Name>Line2</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Size>0</Size>
+              <StartCap Ref="61" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+              <Style>Dot</Style>
+            </Line2>
+            <Line3 Ref="62" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>0,1.49,9.55,0.0254</ClientRectangle>
+              <Color>Black</Color>
+              <EndCap Ref="63" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Name>Line3</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Size>0</Size>
+              <StartCap Ref="64" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+              <Style>Dot</Style>
+            </Line3>
+            <Line5 Ref="65" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>0,3.84,7.26,0.0254</ClientRectangle>
+              <Color>Black</Color>
+              <EndCap Ref="66" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Name>Line5</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Size>0</Size>
+              <StartCap Ref="67" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+              <Style>Dot</Style>
+            </Line5>
+            <Line4 Ref="68" type="HorizontalLinePrimitive" isKey="true">
+              <ClientRectangle>0,3.65,7.26,0.0254</ClientRectangle>
+              <Color>Black</Color>
+              <EndCap Ref="69" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </EndCap>
+              <Name>Line4</Name>
+              <Page isRef="12" />
+              <Parent isRef="38" />
+              <Size>0</Size>
+              <StartCap Ref="70" type="Cap" isKey="true">
+                <Color>Black</Color>
+              </StartCap>
+              <Style>Dot</Style>
+            </Line4>
+          </Components>
+          <Conditions isList="true" count="0" />
+          <Name>ReportFooterSection1</Name>
+          <Page isRef="12" />
+          <Parent isRef="12" />
+        </ReportFooterSection1>
+      </Components>
+      <Conditions isList="true" count="0" />
+      <Guid>be272f7ff778423fa602cb6c6959b99e</Guid>
+      <LargeHeight>True</LargeHeight>
+      <Margins>0,0,0,0</Margins>
+      <Name>Page1</Name>
+      <PageHeight>29.7</PageHeight>
+      <PageWidth>21</PageWidth>
+      <Report isRef="0" />
+      <TitleBeforeHeader>True</TitleBeforeHeader>
+      <Watermark Ref="71" type="Stimulsoft.Report.Components.StiWatermark" isKey="true">
+        <Font>Arial,100</Font>
+        <TextBrush>[50:0:0:0]</TextBrush>
+      </Watermark>
+    </Page1>
+  </Pages>
+  <PrinterSettings Ref="72" type="Stimulsoft.Report.Print.StiPrinterSettings" isKey="true" />
+  <ReferencedAssemblies isList="true" count="8">
+    <value>System.Dll</value>
+    <value>System.Drawing.Dll</value>
+    <value>System.Windows.Forms.Dll</value>
+    <value>System.Data.Dll</value>
+    <value>System.Xml.Dll</value>
+    <value>Stimulsoft.Controls.Dll</value>
+    <value>Stimulsoft.Base.Dll</value>
+    <value>Stimulsoft.Report.Dll</value>
+  </ReferencedAssemblies>
+  <ReportAuthor isNull="true" />
+  <ReportChanged>10/18/2012 12:12:42 PM</ReportChanged>
+  <ReportCreated>10/18/2012 12:12:42 PM</ReportCreated>
+  <ReportDescription isNull="true" />
+  <ReportFile />
+  <ReportGuid>61bb84e3e65b444bbbf6ef79b4fa87cd</ReportGuid>
+  <ReportName>Report</ReportName>
+  <ReportUnit>Centimeters</ReportUnit>
+  <ReportVersion>2012.2.1332</ReportVersion>
+  <Script>using System;
+using System.Drawing;
+using System.Windows.Forms;
+using System.Data;
+using Stimulsoft.Controls;
+using Stimulsoft.Base.Drawing;
+using Stimulsoft.Report;
+using Stimulsoft.Report.Dialogs;
+using Stimulsoft.Report.Components;
+
+namespace Reports
+{
+    public class Report : Stimulsoft.Report.StiReport
+    {
+        public Report()        {
+            this.InitializeComponent();
+        }
+
+        #region StiReport Designer generated code - do not modify
+        #endregion StiReport Designer generated code - do not modify
+    }
+}
+</Script>
+  <ScriptLanguage>CSharp</ScriptLanguage>
+  <Styles isList="true" count="0" />
+</StiSerializer>

@@ -1,0 +1,63 @@
+
+
+/*~~~~~~~~~~~~~~~~ Menu Styles (global - all menus) ~~~~~~~~~~~~~~~~*/
+
+
+	/****[Main Menu]****/
+
+	/*Main Menu Container*/
+	.nfMain {}
+
+	/*Items*/
+	.nfMain .nfItem {height:200px;}
+
+	/*Item Links*/
+	.nfMain .nfLink {width:131px;text-align:center;padding:15px 0px 30px 0px;font-family:Arial;font-size:1em;color:#fff;text-decoration:none;}
+		
+	/*Item Links - Hover (duplicate styles below!)*/
+	.nfPure .nfItem:hover>.nfLink, .nfPure .nfItem:hover>*>.nfLink {text-decoration:none;}
+	.nfPure .nfLink:hover, .nfMain .nfJSHover {text-decoration:none;}
+
+	/*Items - Active (Pure CSS Mode Only)*/
+	.nfPure .nfItem:hover {background:transparent url('../../images/gallery/menu/megaSubs1/hlBox.gif') no-repeat top;}
+	
+	/*Items - Active*/
+	.nfMain .nfJSActiveItem {background:transparent url('../../images/gallery/menu/megaSubs1/hlBox.gif') no-repeat top;}
+	
+	/*Item Links - Active*/
+	.nfMain .nfItem .nfJSActive {color:#333;background:transparent url('../../images/gallery/menu/megaSubs1/downArrow.gif') no-repeat 50% 100%;}
+	
+	/*Item Links - Focus*/
+	.nfPure .nfLink:focus, .nfMain .nfItem .nfJSFocus {}	
+
+	/*Item Links - Breadcrumbs*/
+	.nfMain .nfItem .nfJSBreadcrumb {color:#00f;}
+
+
+
+	/****[Sub Menus]****/
+
+	/*Sub Menu Position Offsets*/
+	.nfMain .nfSubC {margin:0px 0px 0px 0px;}
+
+	/*Sub Menu Styles*/
+	.nfMain .nfSubS {}
+
+	/*Items*/
+	.nfMain .nfSubC .nfItem {}
+
+	/*Item Links*/
+	.nfMain .nfSubS .nfLink {padding:0px;height:400px;width:800px;background:transparent url('../../images/gallery/menu/megaSubs1/megaBG.gif') no-repeat top;}
+		
+	/*Item Links - Hover (duplicate styles below!)*/
+	.nfMain .nfSubC .nfItem:hover>.nfLink {}
+	.nfMain .nfSubC .nfLink:hover, .nfMain .nfSubC .nfJSHover {}
+
+	/*Item Links - Active*/
+	.nfMain .nfSubS .nfItem .nfJSActive {}
+	
+	/*Item Links - Focus*/
+	.nfPure .nfSubS .nfLink:focus, .nfMain .nfSubS .nfItem .nfJSFocus {}	
+
+	/*Item Links - Breadcrumbs*/
+	.nfMain .nfSubS .nfItem .nfJSBreadcrumb {}

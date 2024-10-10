@@ -1,0 +1,6 @@
+kitchenmaster change restarant id 
+orderdetail - print_status - Default inding Values((0))
+ordermaster UID - NULL
+setprimarykey for al IDs
+menu master char(3)
+

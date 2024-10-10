@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <tools name="MainToolbar">
+    <tool name="Save" togglebutton="true" />
+    <tool separator="true"/>
+    <tool name="Undo" toolstrip="true" />
+    <tool name="Redo" toolstrip="true" />
+    <tool name="Reset" />
+    <tool separator="true"/>
+    <tool name="Crop" togglebutton="true" />
+    <tool name="RotateRight" />
+    <tool name="RotateLeft" />
+    <tool name="FlipVertical" />
+    <tool name="FlipHorizontal" />
+    <tool name="ZoomIn" />
+    <tool name="ZoomOut" />
+  </tools>
+</root>
+

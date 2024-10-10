@@ -1,0 +1,532 @@
+CREATE PROCEDURE [dbo].[sp_Kitchen_Save] (
+	-- Add the parameters for the stored procedure here
+
+	@kitchnamep	nvarchar(50),
+	@descrpp	nvarchar(150),
+	@restidp	numeric(18,0),
+    @useridp	numeric(18,0),
+	@kitchidp  numeric(18,0),
+	@Flagp	nvarchar(50))
+AS
+	if(@Flagp = 'N')
+	begin
+	insert into kitchenmaster(name,description,restaurantid,created_by) values(@kitchnamep,@descrpp,@restidp,@useridp);
+	end
+	if(@Flagp = 'U')
+	begin
+	declare @Rowp int;
+	SET @Rowp = (SELECT row_version from kitchenmaster where Id = @kitchidp)
+	SET @Rowp = @Rowp + 1
+	update kitchenmaster set name=@kitchnamep,description=@descrpp,restaurantid=@restidp,modified_by = @useridp,modified_date = getdate(),row_version = @Rowp where id=@kitchidp
+	end
+	if(@Flagp = 'D')
+	begin
+	update kitchenmaster set deleted = 1 where Id = @kitchidp
+	end 
+========================================================================
+CREATE PROCEDURE [dbo].[sp_Master_Insert_AuditTrail] (
+	-- Add the parameters for the stored procedure here
+
+	@useridp	nvarchar(50),
+	@modulep	nvarchar(150),
+	@activityp	nvarchar(50),
+	@resultp	nvarchar(MAX))
+AS
+
+	insert into MasterAuditTrail(UserId,Module,Activity,Exception) values(@useridp,@modulep,@activityp,@resultp);
+========================================================================
+
+CREATE PROCEDURE [dbo].[sp_Master_Insert_Log] (
+	-- Add the parameters for the stored procedure here
+
+	@useridp	nvarchar(50),
+	@modulep	nvarchar(150),
+	@activityp	nvarchar(50),
+	@resultp	nvarchar(50))
+AS
+
+	insert into MasterLog(UserId,Module,Activity,Result) values(@useridp,@modulep,@activityp,@resultp);
+==============================================================================
+CREATE PROCEDURE [dbo].[sp_MasterModule_Delete](
+	-- Add the parameters for the stored procedure here
+	@moduleidp numeric(18,0))
+AS
+
+	update MasterModule set deleted = 1 where ModuleId = @moduleidp
+=================================================================================
+CREATE PROCEDURE [dbo].[sp_MasterModule_Insert](
+	-- Add the parameters for the stored procedure here
+	@namep nvarchar(150),
+	@cfnamep nvarchar(150),
+	@descriptionp nvarchar(300),
+	@approvalflag nchar(1),
+	@useridp	nvarchar(50))
+AS
+	insert into MasterModule(ModuleName,CodeFileName,Description,ApprovalNeeded,createdby) values (@namep,@cfnamep,@descriptionp,@approvalflag,@useridp)
+
+==============================================================================
+CREATE PROCEDURE [dbo].[sp_MasterModule_IsDuplicate](
+	-- Add the parameters for the stored procedure here
+	@modulenamep nvarchar(150))
+AS
+	select count(*) as checkdup from MasterModule where ModuleName = @modulenamep and deleted = 0 
+=================================================================================
+CREATE PROCEDURE [dbo].[sp_MasterModule_Update](
+	-- Add the parameters for the stored procedure here
+	@idp numeric(18,0),
+	@namep nvarchar(150),
+	@cfnamep nvarchar(150),
+	@descriptionp nvarchar(300),
+	@approvalflag nchar(1),
+	@useridp	nvarchar(50),
+	@Rowp int OUTPUT)
+
+AS
+
+	SET @Rowp = (SELECT rowversions from MasterModule where ModuleId = @idp)
+	SET @Rowp = @Rowp + 1
+	update MasterModule set ModuleName=@namep,CodeFileName=@cfnamep,Description = @descriptionp,ApprovalNeeded=@approvalflag,modifiedby = @useridp,modifieddate = getdate(),rowversions = @Rowp where ModuleId = @idp
+
+
+
+====================================================================================
+
+
+CREATE PROCEDURE [dbo].[sp_Menu_Save] (
+	-- Add the parameters for the stored procedure here
+
+	@menunamep	nvarchar(50),
+	@descrp		nvarchar(150),
+	@pricep		numeric(18,0),
+    @discountp	numeric(18,0),
+	@categoryp  numeric(18,0),
+	@avalp		char(3),
+	@useridp	numeric(18,0),
+	@menumstridp numeric(18,0),
+	@Flagp		nvarchar(50),
+	@guidp		nvarchar(50))
+ 
+	AS
+	if(@Flagp = 'N')
+	begin
+	insert into menumaster(name,description,unitprice,discount,category,available,created_by,guid) values(@menunamep,@descrp,@pricep,@discountp,@categoryp,@avalp,@useridp,@guidp);
+	end
+	if(@Flagp = 'U')
+	begin
+	declare @Rowp int;
+	SET @Rowp = (SELECT row_version from menumaster where Id = @menumstridp)
+	SET @Rowp = @Rowp + 1
+	update menumaster set name=@menunamep,description=@descrp,unitprice=@pricep,modified_by = @useridp,modified_date = getdate(),row_version = @Rowp where id=@menumstridp
+	end
+	if(@Flagp = 'D')
+	begin
+	update menumaster set deleted = 1 where Id = @menumstridp
+	end 
+
+
+
+========================================================================================
+
+CREATE PROCEDURE [dbo].[sp_Order_Insert](
+	-- Add the parameters for the stored procedure here
+	@tblno nvarchar(30),
+	@taxorig nvarchar(30),
+	@tax nvarchar(30),
+	@taxadj nvarchar(30),
+	@orderprice nvarchar(50),
+	@total nvarchar(50),
+	@totdisc nvarchar(30),
+	--@orderdate nvarchar(50),
+	@CurrUserId nvarchar(50))
+	AS
+insert into OrderMaster(waiter,taxorg,table_id,tax,ordprice,totalprice,orddate,status,totded,taxadj) values (@CurrUserId,@taxorig,@tblno,@tax,@orderprice,@total,getdate(),'P',@totdisc,@taxadj)
+
+================================================================================================
+create PROCEDURE [dbo].[sp_Order_Update](
+      -- Add the parameters for the stored procedure here
+      @orderid nvarchar(30),
+      @tblno nvarchar(30),
+      @taxorig nvarchar(30),
+      @tax nvarchar(30),
+      @taxadj nvarchar(30),
+      @orderprice nvarchar(50),
+      @total nvarchar(50),
+      @totdisc nvarchar(30),
+      --@orderdate nvarchar(50),
+      @CurrUserId nvarchar(50))
+      AS
+update OrderMaster set waiter=@CurrUserId,taxorg=@taxorig,table_id=@tblno,tax=@tax,ordprice=@orderprice,totalprice=@total,orddate=getdate(),status='P',totded=@totdisc,taxadj=@taxadj where OrderID=@orderid
+=====================================================================================================
+
+CREATE PROCEDURE [dbo].[sp_OrderDetail_Insert] (
+	@CurrUserId nvarchar(50),
+	@price numeric(18,2),
+	@orderid numeric(18,0),
+	@menuid numeric(18,0),
+	@qty numeric(18,0),
+	@deduction numeric(18,2)
+	)
+	AS
+
+	insert into OrderDetail(orderid,menuid,qty,price,deduction,created_by,created_date,status,split) values (@orderid,@menuid,@qty,@price,@deduction,@CurrUserId,getdate(),'Y','1')
+==================================================================================================
+
+CREATE PROCEDURE [dbo].[sp_Table_Save] (
+	-- Add the parameters for the stored procedure here
+
+	@tblnoep	nvarchar(50),
+	@descrpp	nvarchar(150),
+	@restidp	numeric(18,0),
+    @useridp	numeric(18,0),
+	@tblmstridp  numeric(18,0),
+	@Flagp	nvarchar(50))
+AS
+	if(@Flagp = 'N')
+	begin
+	insert into tablemaster(tableno,description,restaurantid,created_by) values(@tblnoep,@descrpp,@restidp,@useridp);
+	end
+	if(@Flagp = 'U')
+	begin
+	declare @Rowp int;
+	SET @Rowp = (SELECT row_version from tablemaster where table_Id = @tblmstridp)
+	SET @Rowp = @Rowp + 1
+	update tablemaster set tableno=@tblnoep,description=@descrpp,restaurantid=@restidp,modified_by = @useridp,modified_date = getdate(),row_version = @Rowp where table_id=@tblmstridp
+	end
+	if(@Flagp = 'D')
+	begin
+	update tablemaster set deleted = 1 where table_Id = @tblmstridp
+	end 
+
+
+==============================================================================================
+
+
+CREATE PROCEDURE [dbo].[sp_Tax_Save] (
+	-- Add the parameters for the stored procedure here
+
+	@taxnamep nvarchar(50),
+	@perctp	numeric(18,0),
+	@aplicabp	nvarchar(50),
+    @useridp	numeric(18,0),
+	@taxtblidp  numeric(18,0),
+	@Flagp	nvarchar(50))
+AS
+	if(@Flagp = 'N')
+	begin
+	insert into taxmaster(name,percentage,flag,created_by) values(@taxnamep,@perctp,@aplicabp,@useridp);
+	end
+	if(@Flagp = 'U')
+	begin
+	declare @Rowp int;
+	SET @Rowp = (SELECT row_version from taxmaster where Id = @taxtblidp)
+	SET @Rowp = @Rowp + 1
+	update taxmaster set name=@taxnamep,percentage=@perctp,flag=@aplicabp,modified_by = @useridp,modified_date = getdate(),row_version = @Rowp where id=@taxtblidp
+	end
+	if(@Flagp = 'D')
+	begin
+	update taxmaster set deleted = 1 where Id = @taxtblidp
+	end 
+
+
+======================================================================================
+-- =============================================
+-- Description:	<Description,,To Update the Data in user_tbl>
+-- =============================================
+CREATE PROCEDURE [dbo].[sp_user_tbl_delete](
+	-- Add the parameters for the stored procedure here
+	@user_aid numeric(5,0))
+AS
+
+	update users_tbl set user_active = 'False' where user_aid = @user_aid
+-----------------------------------------------------------------------------
+===========================================================================================
+CREATE PROCEDURE [dbo].[sp_user_tbl_insert](
+	-- Add the parameters for the stored procedure here
+	@user_name nvarchar(30),
+	@user_password nvarchar(30),
+	@user_group nvarchar(30),
+	@user_email nvarchar(50),
+	@designation nvarchar(50),
+	@department nvarchar(50),
+	@contact_no nvarchar(50),
+	@contact_name nvarchar(50),
+	@user_active	nvarchar(5),
+	@contact nvarchar(5))
+	AS
+
+	insert into users_tbl(user_name,user_password,group_aid,user_email,designation,department,contact_no,contact_name,user_regdate,user_active,contact) values (@user_name,@user_password,@user_group,@user_email,@designation,@department,@contact_no,@contact_name,getdate(),@user_active,@contact)
+===============================================================================================
+CREATE PROCEDURE [dbo].[sp_user_tbl_update](
+	-- Add the parameters for the stored procedure here
+	@user_aid numeric(5, 0),
+	@user_name nvarchar(30),
+	@user_password nvarchar(30),
+	@user_group nvarchar(30),
+	@user_email nvarchar(50),
+	@designation nvarchar(50),
+	@department nvarchar(50),
+	@contact_no nvarchar(50),
+	@contact_name nvarchar(50),
+	@user_active nvarchar(5),
+	@contact nvarchar(5))
+	
+	AS
+
+declare @RowMasterp int;
+SET @RowMasterp = (SELECT rowversions from users_tbl where user_aid = @user_aid);
+SET @RowMasterp = @RowMasterp + 1;
+
+update users_tbl set user_name = @user_name, user_password = @user_password,group_aid = @user_group,user_email = @user_email,designation=@designation,department=@department,contact_no=@contact_no,contact_name=@contact_name,user_active = @user_active,user_regdate=getdate(),rowversions = @RowMasterp,contact=@contact where user_aid = @user_aid
+
+=============================================================================================
+CREATE PROCEDURE [dbo].[sp_UserGroup_Delete](
+	-- Add the parameters for the stored procedure here
+	@group_aidp numeric(18,0))
+AS
+
+	update UserGroup_tbl set deleted = 1 where group_aid = @group_aidp
+	update Users_tbl set deleted = 1 where group_aid= @group_aidp
+	update UserGroupModulePermission set deleted = 1 where group_aid= @group_aidp
+======================================================================================
+CREATE PROCEDURE [dbo].[sp_UserGroup_Insert](
+	-- Add the parameters for the stored procedure here
+	@group_idp nvarchar(50),
+	@descriptionp nvarchar(200))
+	--@useridp	nvarchar(50))
+AS
+
+	insert into UserGroup_tbl(group_id,description,deleted) values (@group_idp,@descriptionp,0)
+============================================================================================
+CREATE PROCEDURE [dbo].[sp_UserGroup_IsDuplicate](
+	-- Add the parameters for the stored procedure here
+	@group_idp nvarchar(50))
+AS
+	select count(*) as checkdup from UserGroup_tbl where group_id = @group_idp and deleted = 0 
+=============================================================================================
+CREATE PROCEDURE [dbo].[sp_UserGroup_Update](
+	-- Add the parameters for the stored procedure here
+	@group_aidp nvarchar(50),
+	@group_idp nvarchar(50),
+	@descriptionp nvarchar(200))
+	--@useridp	nvarchar(50))
+AS
+
+--declare @RowMasterp int;
+--SET @RowMasterp = (SELECT rowversions from UserGroup_tbl where group_aid = @group_aidp);
+--SET @RowMasterp = @RowMasterp + 1;
+
+	update UserGroup_tbl set group_id=@group_idp,description=@descriptionp where group_aid=@group_aidp
+==============================================================================================
+CREATE PROCEDURE [dbo].[sp_UserGroupModulePermission_Save](
+	-- Add the parameters for the stored procedure here
+	@usergroup_aidp numeric(18, 0),
+	@moduleidp numeric(18, 0),
+	@useridp	nvarchar(50))
+AS
+
+declare @getId_count int;
+declare @getid numeric(18, 0);
+declare @RowMasterp int;
+set @getId_count=0;
+set @getid=0;
+set @RowMasterp=0;
+set @getId_count = (select count(id) from UserGroupModulePermission where group_aid = @usergroup_aidp and ModuleId=@moduleidp and Deleted=0);
+set @getid = (select id from UserGroupModulePermission where group_aid = @usergroup_aidp and ModuleId=@moduleidp and Deleted=0);
+SET @RowMasterp = (SELECT rowversions from UserGroupModulePermission where Id = @getid);
+SET @RowMasterp = @RowMasterp + 1;
+
+if (@getId_count < 1)
+	begin
+		insert into UserGroupModulePermission(group_aid,ModuleId,createdby) values (@usergroup_aidp,@moduleidp,@useridp)
+	end
+else
+	begin
+		update UserGroupModulePermission set group_aid = @usergroup_aidp,ModuleId = @moduleidp,modifiedby = @useridp,modifieddate = getdate(),rowversions = @RowMasterp where Id = @getid
+	end
+==================================================================================================
+
+
+
+CREATE PROCEDURE [dbo].[sp_Validate_UserLogin] (
+	-- Add the parameters for the stored procedure here
+	@Useridp nvarchar(50),
+	@Passp nvarchar(20))
+
+AS
+    -- Insert statements for procedure here
+	--SELECT * from users_tbl WHERE user_password = @Passp and users_tbl.user_name = @Useridp and Deleted=0 and users_tbl.user_name not in(select session_logs.user_name from session_logs where session_logs.user_name=@Useridp and active='true') ;
+	SELECT * from users_tbl WHERE user_password = @Passp and users_tbl.user_name = @Useridp and Deleted=0 ;
+====================================================================================================
+
+
+
+
+
+VIEWS
+
+
+=========================================================================
+
+CREATE VIEW [dbo].[VW_ItemWise]
+AS
+SELECT     dbo.orderMaster.Status, dbo.orderMaster.OrdDate, dbo.orderMaster.Deleted, dbo.orderDetail.MenuID, dbo.orderDetail.Qty, dbo.menuMaster.Name AS menuname, 
+                      dbo.orderDetail.Price, dbo.categoryMaster.Name AS catname, dbo.restaurantMaster.Name AS Restname, dbo.categoryMaster.category_ID
+FROM         dbo.categoryMaster INNER JOIN
+                      dbo.orderMaster INNER JOIN
+                      dbo.orderDetail ON dbo.orderMaster.OrderID = dbo.orderDetail.OrderID INNER JOIN
+                      dbo.menuMaster ON dbo.orderDetail.MenuID = dbo.menuMaster.ID ON dbo.categoryMaster.category_ID = dbo.menuMaster.Category INNER JOIN
+                      dbo.kitchenMaster ON dbo.categoryMaster.Kitchen = dbo.kitchenMaster.ID INNER JOIN
+                      dbo.restaurantMaster ON dbo.kitchenMaster.RestaurantID = dbo.restaurantMaster.ID
+
+
+GO
+======================================================================
+CREATE VIEW [dbo].[vw_MasterModulePermission_MasterModuleByModuleID]
+AS
+SELECT     dbo.UserGroupModulePermission.Id, dbo.UserGroupModulePermission.group_aid, dbo.UserGroupModulePermission.ModuleId, dbo.MasterModule.ModuleName, 
+                      dbo.MasterModule.Description, dbo.MasterModule.ApprovalNeeded, dbo.UserGroupModulePermission.Deleted
+FROM         dbo.UserGroupModulePermission INNER JOIN
+                      dbo.MasterModule ON dbo.UserGroupModulePermission.ModuleId = dbo.MasterModule.ModuleId
+
+
+===================================================================
+
+
+CREATE VIEW [dbo].[VW_menumasterDatasource]
+AS
+SELECT     dbo.categoryMaster.Name, dbo.menuMaster.ID, dbo.menuMaster.Name AS catename, dbo.menuMaster.UnitPrice, dbo.menuMaster.Category, dbo.menuMaster.Image, 
+                      dbo.menuMaster.Available, dbo.menuMaster.Picture, dbo.menuMaster.Description, dbo.menuMaster.Discount, dbo.menuMaster.Created_By, 
+                      dbo.menuMaster.Deleted, dbo.menuMaster.guid
+FROM         dbo.menuMaster INNER JOIN
+                      dbo.categoryMaster ON dbo.menuMaster.Category = dbo.categoryMaster.category_ID
+WHERE     (dbo.menuMaster.Deleted = 0)
+
+==================================================================
+
+
+CREATE VIEW [dbo].[vw_ModulePermissionGroup]
+AS
+SELECT     TOP (100) PERCENT dbo.MasterModule.ModuleId, dbo.UserGroupModulePermission.ModuleId AS Expr1, dbo.UserGroupModulePermission.group_aid, 
+                      dbo.MasterModule.ModuleName, dbo.MasterModule.CodeFileName, dbo.UserGroup_tbl.group_id, dbo.MasterModule.TabOrder, dbo.MasterModule.Parent, 
+                      dbo.UserGroup_tbl.Deleted, dbo.UserGroupModulePermission.Deleted AS Expr2, dbo.MasterModule.Deleted AS Expr3
+FROM         dbo.MasterModule INNER JOIN
+                      dbo.UserGroupModulePermission ON dbo.MasterModule.ModuleId = dbo.UserGroupModulePermission.ModuleId INNER JOIN
+                      dbo.UserGroup_tbl ON dbo.UserGroupModulePermission.group_aid = dbo.UserGroup_tbl.group_aid
+WHERE     (dbo.UserGroupModulePermission.Deleted = 0) AND (dbo.UserGroup_tbl.Deleted = 0) AND (dbo.MasterModule.Deleted = 0)
+ORDER BY dbo.MasterModule.TabOrder
+=====================================================================
+
+CREATE VIEW [dbo].[vw_order]
+AS
+SELECT     dbo.orderDetail.OrderID, dbo.orderDetail.MenuID, dbo.orderDetail.DetailID, dbo.orderDetail.Qty, dbo.orderDetail.Price, dbo.orderDetail.Deduction, 
+                      dbo.orderDetail.Created_By, dbo.orderMaster.OrderID AS Expr1, dbo.orderMaster.TotalPrice, dbo.orderMaster.Tax, dbo.orderMaster.OrdDate, dbo.orderMaster.Waiter, 
+                      dbo.orderMaster.TaxOrg, dbo.orderMaster.TotDed, dbo.orderMaster.Table_ID, dbo.kitchenMaster.Name, dbo.kitchenMaster.ID, dbo.menuMaster.Name AS Expr2, 
+                      dbo.menuMaster.ID AS Expr3, dbo.categoryMaster.Kitchen, dbo.menuMaster.Category, dbo.categoryMaster.category_ID
+FROM         dbo.orderMaster INNER JOIN
+                      dbo.orderDetail ON dbo.orderDetail.OrderID = dbo.orderMaster.OrderID INNER JOIN
+                      dbo.menuMaster ON dbo.menuMaster.ID = dbo.orderDetail.MenuID INNER JOIN
+                      dbo.categoryMaster ON dbo.menuMaster.Category = dbo.categoryMaster.category_ID INNER JOIN
+                      dbo.kitchenMaster ON dbo.categoryMaster.Kitchen = dbo.kitchenMaster.ID
+
+======================================================================
+
+CREATE VIEW [dbo].[VW_OrderDetailMenu]
+AS
+SELECT     dbo.orderMaster.OrderID, dbo.orderMaster.UID, dbo.orderMaster.OrdPrice, dbo.orderMaster.OrdDate, dbo.orderDetail.DetailID, dbo.orderDetail.MenuID, 
+                      dbo.orderDetail.Qty, dbo.orderDetail.Price, dbo.orderDetail.Status AS OrderStatus, dbo.orderDetail.Deleted, dbo.menuMaster.Name, dbo.menuMaster.Category, 
+                      dbo.menuMaster.UnitPrice, dbo.orderMaster.Status, dbo.orderDetail.Modified_Date
+FROM         dbo.menuMaster INNER JOIN
+                      dbo.orderDetail ON dbo.menuMaster.ID = dbo.orderDetail.MenuID INNER JOIN
+                      dbo.orderMaster ON dbo.orderDetail.OrderID = dbo.orderMaster.OrderID
+WHERE     (dbo.orderMaster.Status = 'P')
+
+===========================================================================
+CREATE VIEW [dbo].[VW_OrderDetailTable]
+AS
+SELECT     dbo.orderMaster.OrderID, dbo.orderMaster.OrdPrice, dbo.orderMaster.Tax, dbo.orderMaster.TotalPrice, dbo.orderMaster.OrdDate, dbo.orderMaster.Waiter, 
+                      dbo.orderMaster.Cashier, dbo.orderMaster.TaxAdj, dbo.orderMaster.TaxOrg, dbo.orderMaster.TotDed, dbo.orderMaster.Table_ID, dbo.orderDetail.DetailID, 
+                      dbo.orderDetail.MenuID, dbo.orderDetail.Qty, dbo.orderDetail.Split, dbo.orderDetail.Deduction, dbo.TableMaster.TableNo, dbo.orderDetail.Deleted, 
+                      dbo.orderDetail.Price, dbo.menuMaster.Name, dbo.menuMaster.UnitPrice, dbo.menuMaster.Description, dbo.menuMaster.Discount, dbo.orderMaster.Status, 
+                      dbo.orderDetail.Qty * dbo.orderDetail.Price AS mprice, dbo.Users_tbl.contact_name
+FROM         dbo.TableMaster INNER JOIN
+                      dbo.orderMaster ON dbo.TableMaster.Table_ID = dbo.orderMaster.Table_ID INNER JOIN
+                      dbo.orderDetail ON dbo.orderMaster.OrderID = dbo.orderDetail.OrderID INNER JOIN
+                      dbo.menuMaster ON dbo.orderDetail.MenuID = dbo.menuMaster.ID INNER JOIN
+                      dbo.Users_tbl ON dbo.Users_tbl.user_aid = dbo.orderMaster.Waiter
+
+===========================================================================
+
+CREATE VIEW [dbo].[VW_PLU]
+AS
+SELECT     dbo.orderMaster.Status, dbo.orderMaster.OrdDate, dbo.orderMaster.Deleted, dbo.menuMaster.Name AS menuname, dbo.orderDetail.Price, 
+                      dbo.categoryMaster.Name AS catname, dbo.restaurantMaster.Name AS Restname, dbo.categoryMaster.category_ID, dbo.orderDetail.Qty
+FROM         dbo.categoryMaster INNER JOIN
+                      dbo.orderMaster INNER JOIN
+                      dbo.orderDetail ON dbo.orderMaster.OrderID = dbo.orderDetail.OrderID INNER JOIN
+                      dbo.menuMaster ON dbo.orderDetail.MenuID = dbo.menuMaster.ID ON dbo.categoryMaster.category_ID = dbo.menuMaster.Category INNER JOIN
+                      dbo.kitchenMaster ON dbo.categoryMaster.Kitchen = dbo.kitchenMaster.ID INNER JOIN
+                      dbo.restaurantMaster ON dbo.kitchenMaster.RestaurantID = dbo.restaurantMaster.ID
+
+
+===============================================================================
+
+
+CREATE VIEW [dbo].[VW_salesreport]
+AS
+SELECT     dbo.menuMaster.ID AS menumastetblrid, dbo.orderMaster.OrderID AS ordermasterid, dbo.menuMaster.Name, dbo.menuMaster.UnitPrice, dbo.menuMaster.Image, 
+                      dbo.menuMaster.Available, dbo.menuMaster.Description, dbo.categoryMaster.category_ID AS cateid, dbo.orderMaster.UID, dbo.userMaster.ID AS usermastid, 
+                      dbo.orderMaster.Waiter, dbo.orderMaster.OrdDate, dbo.orderMaster.Status, dbo.orderMaster.TotalPrice, dbo.orderMaster.Tax, dbo.orderMaster.OrdPrice, 
+                      dbo.orderMaster.Deleted
+FROM         dbo.orderDetail INNER JOIN
+                      dbo.orderMaster ON dbo.orderDetail.OrderID = dbo.orderMaster.OrderID INNER JOIN
+                      dbo.categoryMaster INNER JOIN
+                      dbo.menuMaster ON dbo.categoryMaster.category_ID = dbo.menuMaster.Category ON dbo.orderDetail.MenuID = dbo.menuMaster.ID INNER JOIN
+                      dbo.userMaster ON dbo.orderMaster.Waiter = dbo.userMaster.UID INNER JOIN
+                      dbo.LoginInfo ON dbo.userMaster.ID = dbo.LoginInfo.UID
+
+
+==============================================================================
+
+CREATE VIEW [dbo].[VW_salesreportone]
+AS
+SELECT     dbo.orderMaster.Status, dbo.orderMaster.OrdDate, dbo.orderDetail.Qty, dbo.orderDetail.Price, dbo.menuMaster.Name AS menuname, 
+                      dbo.categoryMaster.Name AS catname, dbo.categoryMaster.category_ID, dbo.orderMaster.Deleted, dbo.restaurantMaster.Name AS RestName
+FROM         dbo.restaurantMaster INNER JOIN
+                      dbo.kitchenMaster ON dbo.restaurantMaster.ID = dbo.kitchenMaster.RestaurantID INNER JOIN
+                      dbo.orderMaster INNER JOIN
+                      dbo.orderDetail ON dbo.orderMaster.OrderID = dbo.orderDetail.OrderID INNER JOIN
+                      dbo.menuMaster ON dbo.orderDetail.MenuID = dbo.menuMaster.ID INNER JOIN
+                      dbo.categoryMaster ON dbo.menuMaster.Category = dbo.categoryMaster.category_ID ON dbo.kitchenMaster.ID = dbo.categoryMaster.Kitchen
+
+
+==========================================================================
+
+
+CREATE VIEW [dbo].[VW_Summary]
+AS
+SELECT     dbo.orderMaster.Status, dbo.orderMaster.OrdDate, dbo.orderMaster.Deleted, dbo.orderDetail.Price, dbo.categoryMaster.Name AS catname, 
+                      dbo.restaurantMaster.Name AS Restname, dbo.orderDetail.Deduction, dbo.categoryMaster.category_ID
+FROM         dbo.categoryMaster INNER JOIN
+                      dbo.orderMaster INNER JOIN
+                      dbo.orderDetail ON dbo.orderMaster.OrderID = dbo.orderDetail.OrderID INNER JOIN
+                      dbo.menuMaster ON dbo.orderDetail.MenuID = dbo.menuMaster.ID ON dbo.categoryMaster.category_ID = dbo.menuMaster.Category INNER JOIN
+                      dbo.kitchenMaster ON dbo.categoryMaster.Kitchen = dbo.kitchenMaster.ID INNER JOIN
+                      dbo.restaurantMaster ON dbo.kitchenMaster.RestaurantID = dbo.restaurantMaster.ID
+
+===========================================================================
+
+CREATE VIEW [dbo].[VW_TableOrderMaster]
+AS
+SELECT     dbo.orderMaster.OrderID, dbo.orderMaster.UID, dbo.orderMaster.OrdPrice, dbo.orderMaster.Tax, dbo.orderMaster.TotalPrice, dbo.orderMaster.Status, 
+                      dbo.orderMaster.OrdDate, dbo.orderMaster.Waiter, dbo.orderMaster.Cashier, dbo.orderMaster.TaxAdj, dbo.orderMaster.TaxOrg, dbo.orderMaster.TotDed, 
+                      dbo.orderMaster.Table_ID, dbo.orderMaster.Created_By, dbo.orderMaster.Created_Date, dbo.orderMaster.Deleted, dbo.TableMaster.TableNo, 
+                      dbo.TableMaster.Description
+FROM         dbo.orderMaster INNER JOIN
+                      dbo.TableMaster ON dbo.orderMaster.Table_ID = dbo.TableMaster.Table_ID
+WHERE     (dbo.orderMaster.Status = 'P')
+==============================================================================
+CREATE VIEW [dbo].[VW_TaxreportOrdermaster]
+AS
+SELECT     OrdPrice, OrdDate, Cashier, Status, Tax, Deleted
+FROM         dbo.orderMaster
+
